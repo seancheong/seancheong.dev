@@ -3,14 +3,39 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: hsl(0, 0%, 98%);
+  --foreground: hsl(240, 2%, 48%);
+
+  --primary: hsl(60, 87%, 6%);
+
+  --secondary: hsl(240, 3%, 93%);
+
+  --card-background: hsl(0, 0%, 100%);
+
+  --icon-background: hsl(0, 0%, 96%);
+
+  --chip-foreground: hsl(240, 7%, 22%);
+
+  --timeline: hsl(240, 2%, 56%);
 }
 
+/* TODO: will update the dark mode color in future */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: hsl(0, 0%, 98%);
+    --foreground: hsl(240, 2%, 48%);
+
+    --primary: hsl(60, 87%, 6%);
+
+    --secondary: hsl(240, 3%, 93%);
+
+    --card-background: hsl(0, 0%, 100%);
+
+    --icon-background: hsl(0, 0%, 96%);
+
+    --chip-foreground: hsl(240, 7%, 22%);
+
+    --timeline: hsl(240, 2%, 56%);
   }
 }
 
