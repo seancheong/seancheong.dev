@@ -4,7 +4,7 @@ const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -16,20 +16,20 @@ const config: Config = {
         border: 'var(--secondary)',
         input: {
           background: 'var(--background)',
-          foreground: 'var(--foreground)'
+          foreground: 'var(--foreground)',
         },
         icon: {
           background: 'var(--icon-background)',
-          foreground: 'var(--foreground)'
+          foreground: 'var(--foreground)',
         },
         chip: {
           background: 'var(--card-background)',
-          foreground: 'var(--chip-foreground)'
+          foreground: 'var(--chip-foreground)',
         },
-        timeline: 'var(--timeline)'
-      }
-    }
+        timeline: 'var(--timeline)',
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };
 export default config;
