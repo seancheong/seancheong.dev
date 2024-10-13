@@ -15,6 +15,7 @@ const config: Config = {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         heading: 'hsl(var(--heading))',
+        icon: 'hsl(var(--icon))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -68,6 +69,11 @@ const config: Config = {
         h1: {
           fontSize: theme('fontSize.4xl'),
           lineHeight: theme('fontSize.4xl'),
+          color: theme('colors.heading'),
+        },
+        h2: {
+          fontSize: theme('fontSize.xl'),
+          lineHeight: theme('fontSize.xl'),
           color: theme('colors.heading'),
         },
       });

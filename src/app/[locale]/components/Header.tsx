@@ -21,11 +21,11 @@ export const Header = () => {
   const t = useTranslations('Common');
 
   return (
-    <header className="sticky top-0 flex items-center pt-6">
+    <header className="sticky top-0 z-10 flex items-center rounded-b-xl bg-background pt-6">
       <nav className="flex w-full items-center justify-between rounded-2xl border bg-white p-2">
         <Button
           size="icon"
-          className="rounded-xl bg-indigo-900 hover:bg-indigo-900/90"
+          className="rounded-xl bg-orange-800 hover:bg-amber-800/90"
           asChild
         >
           <Link href="#">

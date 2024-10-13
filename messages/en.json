@@ -13,5 +13,10 @@
       "education": "Education",
       "skills": "Skills"
     }
+  },
+  "Profile": {
+    "title": "Professional Profile",
+    "detail": "With 12 years of hands-on experience in software development. Currently serve as the Frontend Lead in Woven by Toyota Japan. Well versed in frontend related technologies. Extensive background in full cycle of software development process including requirements gathering, design, coding, testing and maintenance.",
+    "location": "Based in Tokyo, Japan"
   }
 }
