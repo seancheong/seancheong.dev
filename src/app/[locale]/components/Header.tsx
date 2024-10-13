@@ -5,8 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { PaperPlaneIcon } from '@radix-ui/react-icons';
-import { Menu } from 'lucide-react';
+import { HamburgerMenuIcon, PaperPlaneIcon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
@@ -57,7 +56,7 @@ export const Header = () => {
               size="icon"
               className="rounded-xl md:hidden"
             >
-              <Menu className="h-6 w-6" />
+              <HamburgerMenuIcon className="h-6 w-6" />
               <span className="sr-only">{t('toggle-menu')}</span>
             </Button>
           </DropdownMenuTrigger>

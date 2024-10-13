@@ -1,8 +1,11 @@
 {
   "Common": {
-    "name": "Sean Cheong Zhen Xiong",
+    "name": "Sean Cheong",
+    "title": "Senior Software Engineer",
     "contact-me": "Contact Me",
     "toggle-menu": "Toggle user menu",
+    "send-email": "Send Email",
+    "download-cv": "Download CV",
     "nav": {
       "home": "Home",
       "profile": "Profile",

@@ -1,4 +1,6 @@
 import type { Config } from 'tailwindcss';
+import animate from 'tailwindcss-animate';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   darkMode: ['class'],
@@ -12,6 +14,7 @@ const config: Config = {
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        heading: 'hsl(var(--heading))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -22,15 +25,6 @@ const config: Config = {
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
-        icon: {
-          background: 'var(--icon-background)',
-          foreground: 'var(--foreground)',
-        },
-        chip: {
-          background: 'var(--card-background)',
-          foreground: 'var(--chip-foreground)',
-        },
-        timeline: 'var(--timeline)',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
@@ -67,7 +61,17 @@ const config: Config = {
       },
     },
   },
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    animate,
+    plugin(function ({ addBase, theme }) {
+      addBase({
+        h1: {
+          fontSize: theme('fontSize.4xl'),
+          lineHeight: theme('fontSize.4xl'),
+          color: theme('colors.heading'),
+        },
+      });
+    }),
+  ],
 };
 export default config;
