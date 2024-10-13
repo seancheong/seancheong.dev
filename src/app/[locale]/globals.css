@@ -41,13 +41,13 @@ body {
 
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 60, 87%, 6%;
+    --primary: 60 87% 6%;
 
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240, 3%, 93%;
+    --secondary: 240 3% 93%;
 
-    --secondary-foreground: 240, 7%, 22%;
+    --secondary-foreground: 240 7% 22%;
 
     --muted: 240 4.8% 95.9%;
 
@@ -61,7 +61,7 @@ body {
 
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240, 3%, 93%;
+    --border: 240 3% 93%;
 
     --input: 240 2% 48%;
 

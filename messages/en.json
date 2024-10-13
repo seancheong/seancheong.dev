@@ -1,5 +1,14 @@
 {
-  "Home": {
-    "name": "Sean Cheong Zhen Xiong"
+  "Common": {
+    "name": "Sean Cheong Zhen Xiong",
+    "contact-me": "Contact Me",
+    "toggle-menu": "Toggle user menu",
+    "nav": {
+      "home": "Home",
+      "profile": "Profile",
+      "experience": "Experience",
+      "education": "Education",
+      "skills": "Skills"
+    }
   }
 }
