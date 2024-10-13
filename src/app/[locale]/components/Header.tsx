@@ -22,19 +22,15 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-10 flex items-center rounded-b-xl bg-background pt-6">
-      <nav className="flex w-full items-center justify-between rounded-2xl border bg-white p-2">
-        <Button
-          size="icon"
-          className="rounded-xl bg-orange-800 hover:bg-amber-800/90"
-          asChild
-        >
+      <nav className="bg-container flex w-full items-center justify-between rounded-2xl border p-2">
+        <Button variant="secondary" size="icon" className="rounded-xl" asChild>
           <Link href="#">
             <span className="text-lg">SC</span>
             <span className="sr-only">{t('name')}</span>
           </Link>
         </Button>
 
-        <div className="hidden gap-6 md:flex lg:gap-12">
+        <div className="hidden gap-6 md:flex">
           {sections.map((section) => (
             <Link href="#" key={section.name}>
               {t(`nav.${section.name}`)}

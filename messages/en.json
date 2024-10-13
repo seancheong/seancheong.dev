@@ -18,5 +18,10 @@
     "title": "Professional Profile",
     "detail": "With 12 years of hands-on experience in software development. Currently serve as the Frontend Lead in Woven by Toyota Japan. Well versed in frontend related technologies. Extensive background in full cycle of software development process including requirements gathering, design, coding, testing and maintenance.",
     "location": "Based in Tokyo, Japan"
+  },
+  "Experience": {
+    "title": "Work Experience",
+    "detail": "<ul><li>Experience leading teams of Frontend developers in <b>Agile methodology</b>.</li><li>Skillful in building applications from scratch using frontend technologies, e.g., <b>React</b>, <b>Vue.js</b>, <b>Angular</b> and <b>Typescript</b>.</li><li>Experience in native app development, such as creating mobile and desktop applications using JavaScript frameworks, e.g., <b>React Native</b> and <b>Electron</b>.</li><li><b>Certified AWS Solutions Architect Associate</b>, with hands-on and strong knowledge in designing cost-efficient, fault-tolerant and scalable distributed systems on AWS.</li><li><b>Certified ScrumMaster</b>.</li></ul>",
+    "worked-with": "Worked or Working With"
   }
 }

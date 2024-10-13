@@ -17,7 +17,7 @@ export const Profile = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-12 rounded-lg border bg-white p-6 md:flex-1">
+      <div className="bg-container flex flex-col gap-12 rounded-lg border p-6 md:flex-1">
         <div className="bg-icon h-fit w-fit rounded-xl border p-3">
           <AvatarIcon className="h-6 w-6" />
         </div>
@@ -30,7 +30,7 @@ export const Profile = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <SewingPinFilledIcon />
+            <SewingPinFilledIcon className="text-primary" />
             <span className="text-xs">{t('location')}</span>
           </div>
         </div>

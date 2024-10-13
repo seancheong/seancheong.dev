@@ -26,6 +26,7 @@ const config: Config = {
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
+        container: 'hsl(var(--container))',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
@@ -75,6 +76,9 @@ const config: Config = {
           fontSize: theme('fontSize.xl'),
           lineHeight: theme('fontSize.xl'),
           color: theme('colors.heading'),
+        },
+        ul: {
+          listStyle: 'disc',
         },
       });
     }),
