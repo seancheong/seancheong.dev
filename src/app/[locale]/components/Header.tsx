@@ -57,7 +57,7 @@ export const Header = () => {
             </Button>
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent align="end" className="text-foreground">
             {sections.map((section) => (
               <DropdownMenuItem key={section.name} asChild>
                 <Link href="#">{t(`nav.${section.name}`)}</Link>

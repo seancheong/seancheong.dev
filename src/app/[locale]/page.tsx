@@ -2,7 +2,6 @@ import { Experience } from './components/Experience';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Profile } from './components/Profile';
-import { WorkedWith } from './components/WorkedWith';
 
 export default function Home() {
   return (
@@ -16,10 +15,6 @@ export default function Home() {
 
         <section id="profile" className="pt-20">
           <Profile />
-        </section>
-
-        <section id="worked-with">
-          <WorkedWith />
         </section>
 
         <section id="experience">

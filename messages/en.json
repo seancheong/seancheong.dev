@@ -6,6 +6,17 @@
     "toggle-menu": "Toggle user menu",
     "send-email": "Send Email",
     "download-cv": "Download CV",
+    "now": "Now",
+    "titles": {
+      "senior-software-engineer": "Senior Software Engineer",
+      "frontend-team-lead": "Frontend Team Lead",
+      "software-engineer-2": "Software Engineer II",
+      "software-engineer": "Software Engineer"
+    },
+    "locations": {
+      "tokyo": "Tokyo, Japan",
+      "singapore": "Singapore"
+    },
     "nav": {
       "home": "Home",
       "profile": "Profile",
@@ -21,7 +32,6 @@
   },
   "Experience": {
     "title": "Work Experience",
-    "detail": "<ul><li>Experience leading teams of Frontend developers in <b>Agile methodology</b>.</li><li>Skillful in building applications from scratch using frontend technologies, e.g., <b>React</b>, <b>Vue.js</b>, <b>Angular</b> and <b>Typescript</b>.</li><li>Experience in native app development, such as creating mobile and desktop applications using JavaScript frameworks, e.g., <b>React Native</b> and <b>Electron</b>.</li><li><b>Certified AWS Solutions Architect Associate</b>, with hands-on and strong knowledge in designing cost-efficient, fault-tolerant and scalable distributed systems on AWS.</li><li><b>Certified ScrumMaster</b>.</li></ul>",
-    "worked-with": "Worked or Working With"
+    "detail": "<ul><li>Experience leading teams of Frontend developers in <b>Agile methodology</b>.</li><li>Skillful in building applications from scratch using frontend technologies, e.g., <b>React</b>, <b>Vue.js</b>, <b>Angular</b> and <b>Typescript</b>.</li><li>Experience in native app development, such as creating mobile and desktop applications using JavaScript frameworks, e.g., <b>React Native</b> and <b>Electron</b>.</li><li><b>Certified AWS Solutions Architect Associate</b>, with hands-on and strong knowledge in designing cost-efficient, fault-tolerant and scalable distributed systems on AWS.</li><li><b>Certified ScrumMaster</b>.</li></ul>"
   }
 }

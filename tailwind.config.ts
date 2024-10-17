@@ -16,6 +16,7 @@ const config: Config = {
         foreground: 'hsl(var(--foreground))',
         heading: 'hsl(var(--heading))',
         icon: 'hsl(var(--icon))',
+        timeline: 'hsl(var(--timeline))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -61,6 +62,9 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      gridTemplateColumns: {
+        'auto-fill': 'repeat(auto-fill, minmax(4rem, min-content))',
+      },
     },
   },
   plugins: [
@@ -70,11 +74,19 @@ const config: Config = {
         h1: {
           fontSize: theme('fontSize.4xl'),
           lineHeight: theme('fontSize.4xl'),
+          fontWeight: theme('fontWeight.medium'),
           color: theme('colors.heading'),
         },
         h2: {
           fontSize: theme('fontSize.xl'),
           lineHeight: theme('fontSize.xl'),
+          fontWeight: theme('fontWeight.medium'),
+          color: theme('colors.heading'),
+        },
+        h3: {
+          fontSize: theme('fontSize.base'),
+          lineHeight: theme('fontSize.base'),
+          fontWeight: theme('fontWeight.medium'),
           color: theme('colors.heading'),
         },
         ul: {

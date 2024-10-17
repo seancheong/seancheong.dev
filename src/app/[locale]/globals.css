@@ -31,11 +31,13 @@ body {
   :root {
     --background: 0 0% 98%;
 
-    --foreground: 240 2% 48%;
+    --foreground: 240 2% 36%;
 
     --heading: 240 13% 13%;
 
     --icon: 0 0% 96%;
+
+    --timeline: 240 2% 56%;
 
     --container: 0 0% 100%;
 
@@ -59,9 +61,9 @@ body {
 
     --muted-foreground: 240 3.8% 46.1%;
 
-    --accent: 240 4.8% 95.9%;
+    --accent: 212 80% 92%;
 
-    --accent-foreground: 240 5.9% 10%;
+    --accent-foreground: 217 91% 60%;
 
     --destructive: 0 84.2% 60.2%;
 

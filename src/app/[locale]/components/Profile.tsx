@@ -1,4 +1,4 @@
-import { AvatarIcon, SewingPinFilledIcon } from '@radix-ui/react-icons';
+import { AvatarIcon, SewingPinIcon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
@@ -30,7 +30,7 @@ export const Profile = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <SewingPinFilledIcon className="text-primary" />
+            <SewingPinIcon />
             <span className="text-xs">{t('location')}</span>
           </div>
         </div>

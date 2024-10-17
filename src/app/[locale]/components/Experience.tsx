@@ -1,6 +1,9 @@
+import { Separator } from '@/components/ui/separator';
 import { ArchiveIcon } from '@radix-ui/react-icons';
 import DOMPurify from 'isomorphic-dompurify';
 import { useTranslations } from 'next-intl';
+
+import { ExperienceTimeline } from './ExperienceTimeline';
 
 export const Experience = () => {
   const t = useTranslations('Experience');
@@ -24,6 +27,12 @@ export const Experience = () => {
             />
           </div>
         </div>
+      </div>
+
+      <Separator />
+
+      <div className="p-8">
+        <ExperienceTimeline />
       </div>
     </div>
   );
