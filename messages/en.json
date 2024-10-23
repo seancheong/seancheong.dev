@@ -33,5 +33,24 @@
   "Experience": {
     "title": "Work Experience",
     "detail": "<ul><li>Experience leading teams of Frontend developers in <b>Agile methodology</b>.</li><li>Skillful in building applications from scratch using frontend technologies, e.g., <b>React</b>, <b>Vue.js</b>, <b>Angular</b> and <b>Typescript</b>.</li><li>Experience in native app development, such as creating mobile and desktop applications using JavaScript frameworks, e.g., <b>React Native</b> and <b>Electron</b>.</li><li><b>Certified AWS Solutions Architect Associate</b>, with hands-on and strong knowledge in designing cost-efficient, fault-tolerant and scalable distributed systems on AWS.</li><li><b>Certified ScrumMaster</b>.</li></ul>"
+  },
+  "Project": {
+    "title": "Personal Projects",
+    "script-blender": {
+      "title": "Script Blender",
+      "description": "A dynamic web-based coding platform for JavaScript and TypeScript, featuring real-time execution with Monaco Editor integration"
+    },
+    "cashush": {
+      "title": "Cashush",
+      "description": "A brief overview of Cashush: easy & accessible lending solutions."
+    },
+    "chroma-ui": {
+      "title": "Chroma UI",
+      "description": "A design system built with React, Tailwind CSS and Storybook."
+    },
+    "vue-task-management": {
+      "title": "Vue Task Management",
+      "description": "A Vue 3 Composition API library designed for task management processes"
+    }
   }
 }

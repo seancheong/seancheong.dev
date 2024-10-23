@@ -2,6 +2,7 @@ import { Experience } from './components/Experience';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Profile } from './components/Profile';
+import { Projects } from './components/Projects';
 
 export default function Home() {
   return (
@@ -19,6 +20,10 @@ export default function Home() {
 
         <section id="experience">
           <Experience />
+        </section>
+
+        <section id="projects">
+          <Projects />
         </section>
       </main>
     </div>
