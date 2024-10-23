@@ -9,9 +9,9 @@ export const Experience = () => {
   const t = useTranslations('Experience');
 
   return (
-    <div className="bg-container rounded-lg border">
+    <div className="rounded-lg border bg-container">
       <div className="flex flex-col gap-6 p-6">
-        <div className="bg-icon h-fit w-fit rounded-xl border p-3">
+        <div className="h-fit w-fit rounded-xl border bg-icon p-3">
           <ArchiveIcon className="h-6 w-6" />
         </div>
 

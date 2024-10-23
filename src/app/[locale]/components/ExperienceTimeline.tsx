@@ -103,7 +103,7 @@ export const ExperienceTimeline = () => {
       {companyExperiences.map(({ id, duration, title, company, skills }) => (
         <div key={id} className="flex">
           <div className="pt-2">
-            <div className="bg-icon h-full w-[2px]" />
+            <div className="h-full w-[2px] bg-icon" />
           </div>
 
           <div className="-ml-1 flex w-full items-start justify-start gap-4">
@@ -131,7 +131,7 @@ export const ExperienceTimeline = () => {
 
               <p className="text-xs">{t(`locations.${company.location}`)}</p>
 
-              <div className="grid-cols-auto-fill grid gap-1">
+              <div className="grid grid-cols-auto-fill gap-1">
                 {skills.map((skill) => (
                   <Badge
                     key={skill}
