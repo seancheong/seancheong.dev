@@ -13,6 +13,7 @@ export const Profile = () => {
           alt="profile"
           priority
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="rounded-lg border object-cover"
         />
       </div>

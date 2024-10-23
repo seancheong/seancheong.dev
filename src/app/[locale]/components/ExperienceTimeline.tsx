@@ -95,7 +95,7 @@ export const ExperienceTimeline = () => {
       // current duration
       return `${format.dateTime(duration.from, dateTimeFormat)} - ${t('now')}`;
     },
-    [format],
+    [format, t],
   );
 
   return (
@@ -125,6 +125,7 @@ export const ExperienceTimeline = () => {
                   src={`/images/${company.image}`}
                   alt={company.name}
                   fill
+                  sizes="50vw"
                   className="object-contain"
                 />
               </div>

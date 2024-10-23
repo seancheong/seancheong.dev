@@ -44,6 +44,7 @@ const ProjectImage = ({ src, alt, className = '' }: ProjectImageProps) => (
       src={src}
       alt={alt}
       fill
+      sizes="(max-width: 768px) 100vw, 50vw"
       className={twMerge(
         'rounded-[8px] border border-border bg-icon object-cover',
         className,
