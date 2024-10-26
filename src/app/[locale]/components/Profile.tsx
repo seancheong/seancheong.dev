@@ -9,8 +9,8 @@ export const Profile = () => {
     <div className="flex flex-col gap-2 md:flex-row">
       <div className="relative h-[400px] w-auto md:h-auto md:max-w-72 md:flex-1">
         <Image
-          src="/images/profile.jpg"
-          alt="profile"
+          src="/images/portrait.jpg"
+          alt="portrait"
           priority
           fill
           sizes="(max-width: 768px) 100vw, 50vw"

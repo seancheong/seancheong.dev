@@ -15,14 +15,14 @@ export const Hero = () => {
       </div>
 
       <div className="flex flex-col justify-center gap-2 md:flex-row">
-        <Button className="flex gap-2 rounded-xl" asChild>
+        <Button className="gap-2 rounded-xl" asChild>
           <Link href="#">
             <EnvelopeClosedIcon />
             <span>{t('send-email')}</span>
           </Link>
         </Button>
 
-        <Button variant="secondary" className="flex gap-2 rounded-xl" asChild>
+        <Button variant="secondary" className="gap-2 rounded-xl" asChild>
           <Link href="#">
             <DownloadIcon />
             <span>{t('download-cv')}</span>

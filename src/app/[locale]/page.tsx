@@ -1,3 +1,5 @@
+import { Contact } from './components/Contact';
+import { Email } from './components/Email';
 import { Experience } from './components/Experience';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
@@ -9,7 +11,7 @@ export default function Home() {
     <div className="mx-auto max-w-[768px] px-6">
       <Header />
 
-      <main className="flex flex-col gap-2">
+      <main className="mb-24 flex flex-col gap-2">
         <section id="hero" className="pt-20">
           <Hero />
         </section>
@@ -25,7 +27,17 @@ export default function Home() {
         <section id="projects">
           <Projects />
         </section>
+
+        <section id="contact" className="flex flex-col gap-10 pt-20">
+          <Contact />
+
+          <Email />
+        </section>
       </main>
+
+      <footer className="border-t-[1px] border-secondary-foreground/30 py-6 text-center">
+        © 2024, All Right Reserved
+      </footer>
     </div>
   );
 }

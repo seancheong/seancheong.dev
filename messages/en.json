@@ -5,6 +5,7 @@
     "contact-me": "Contact Me",
     "toggle-menu": "Toggle user menu",
     "send-email": "Send Email",
+    "send-message": "Send Message",
     "download-cv": "Download CV",
     "now": "Now",
     "titles": {
@@ -51,6 +52,37 @@
     "vue-task-management": {
       "title": "Vue Task Management",
       "description": "A Vue 3 Composition API library designed for task management processes"
+    }
+  },
+  "Contact": {
+    "title": "Feel Free to Reach Out",
+    "description": "Let's start a productive conversation",
+    "aria-labels": {
+      "linkedin": "LinkedIn's profile",
+      "github": "Github's profile",
+      "medium": "Medium's profile"
+    }
+  },
+  "Email": {
+    "title": "Get in touch with me!",
+    "description": "Have a question, feedback, or just want to say hello? I'd love to hear from you! Your communication matters to me!",
+    "inputs": {
+      "name": {
+        "label": "Name",
+        "placeholder": "John Doe",
+        "error": "Name must contain at least 3 characters"
+      },
+      "email": {
+        "label": "Email",
+        "description": "Email address that I can get in touch with you",
+        "placeholder": "john.doe@gmail.com",
+        "error": "Invalid email"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Type your message here.",
+        "error": "Message must contain at least 3 characters"
+      }
     }
   }
 }
