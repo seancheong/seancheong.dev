@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/Reveal';
+import { getYear } from 'date-fns';
 
 import { Contact } from './components/Contact';
 import { Email } from './components/Email';
@@ -7,6 +8,8 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Profile } from './components/Profile';
 import { Projects } from './components/Projects';
+
+const currentYear = getYear(new Date());
 
 export default function Home() {
   return (
@@ -53,7 +56,7 @@ export default function Home() {
 
       <Reveal direction="bottom">
         <footer className="border-t-[1px] border-secondary-foreground/30 py-6 text-center">
-          © 2024, All Right Reserved
+          {`© ${currentYear}, All Right Reserved`}
         </footer>
       </Reveal>
     </div>

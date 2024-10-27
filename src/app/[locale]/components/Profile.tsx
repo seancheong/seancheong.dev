@@ -1,6 +1,9 @@
 import { AvatarIcon, SewingPinIcon } from '@radix-ui/react-icons';
+import { differenceInYears } from 'date-fns';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+
+const experienceYears = differenceInYears(new Date(), new Date(2011, 6, 1));
 
 export const Profile = () => {
   const t = useTranslations('Profile');
@@ -27,7 +30,7 @@ export const Profile = () => {
           <div className="flex flex-col gap-3">
             <h2>{t('title')}</h2>
 
-            <p>{t('detail')}</p>
+            <p>{t('detail', { year: experienceYears })}</p>
           </div>
 
           <div className="flex items-center gap-2">
