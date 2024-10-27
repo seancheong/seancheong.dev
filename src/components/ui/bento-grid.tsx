@@ -1,4 +1,6 @@
 import { cn } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 export const BentoGrid = ({
   className,
@@ -20,22 +22,28 @@ export const BentoGrid = ({
 };
 
 export const BentoGridItem = ({
+  url,
   className,
   title,
   description,
   image,
   icon,
 }: {
+  url: string;
   className?: string;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
   image?: React.ReactNode;
   icon?: React.ReactNode;
 }) => {
+  const t = useTranslations('Common');
+
   return (
-    <div
+    <Link
+      href={url}
+      target="_blank"
       className={cn(
-        'row-span-1 flex flex-col justify-between space-y-4 rounded-lg border bg-container p-4',
+        'group row-span-1 flex flex-col justify-between space-y-4 rounded-lg border bg-container p-4',
         className,
       )}
     >
@@ -44,8 +52,12 @@ export const BentoGridItem = ({
         {icon}
         <h3 className="my-2 font-bold">{title}</h3>
 
-        <p className="text-xs">{description}</p>
+        <p className="text-xs">{description} </p>
+
+        <span className="text-xs font-medium text-blue-600 underline hover:no-underline dark:text-blue-500">
+          {t('show-more')}
+        </span>
       </div>
-    </div>
+    </Link>
   );
 };

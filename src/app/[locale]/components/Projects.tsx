@@ -24,6 +24,7 @@ export const Projects = () => {
             title={t(`${item.name}.title`)}
             description={t(`${item.name}.description`)}
             image={item.image}
+            url={item.url}
             className={item.className}
           />
         ))}
@@ -39,14 +40,14 @@ interface ProjectImageProps {
 }
 
 const ProjectImage = ({ src, alt, className = '' }: ProjectImageProps) => (
-  <div className="relative h-full min-h-[6rem] w-full">
+  <div className="relative h-full min-h-[6rem] w-full overflow-hidden rounded-[8px] border border-border">
     <Image
       src={src}
       alt={alt}
       fill
       sizes="(max-width: 768px) 100vw, 50vw"
       className={twMerge(
-        'rounded-[8px] border border-border bg-icon object-cover',
+        'transform bg-icon object-cover transition duration-500 ease-in-out group-hover:scale-125',
         className,
       )}
     />
@@ -63,6 +64,7 @@ const projects = [
         className="md:object-fill"
       />
     ),
+    url: 'https://www.script-blender.com/',
     className: 'md:col-span-2',
   },
   {
@@ -74,6 +76,7 @@ const projects = [
         className="md:object-right"
       />
     ),
+    url: 'https://cashush.com',
     className: 'md:col-span-1',
   },
   {
@@ -85,6 +88,7 @@ const projects = [
         className="object-fill md:object-contain"
       />
     ),
+    url: 'https://github.com/seancheong/chroma-ui',
     className: 'md:col-span-1',
   },
   {
@@ -96,6 +100,7 @@ const projects = [
         className="md:object-fill"
       />
     ),
+    url: 'https://github.com/seancheong/vue-task-management',
     className: 'md:col-span-2',
   },
 ] as const;
