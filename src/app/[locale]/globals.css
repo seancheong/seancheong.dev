@@ -2,21 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* TODO: remove the styles below once all the components are finalized */
-/* :root {
-  --primary: hsl(60, 87%, 6%);
-
-  --secondary: hsl(240, 3%, 93%);
-
-  --card-background: hsl(0, 0%, 100%);
-
-  --icon-background: hsl(0, 0%, 96%);
-
-  --chip-foreground: hsl(240, 7%, 22%);
-
-  --timeline: hsl(240, 2%, 56%);
-} */
-
 body {
   font-family: Arial, Helvetica, sans-serif;
 }

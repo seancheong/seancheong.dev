@@ -83,6 +83,9 @@
         "placeholder": "Type your message here.",
         "error": "Message must contain at least 3 characters"
       }
+    },
+    "toast": {
+      "success": "Email sent successfully"
     }
   }
 }

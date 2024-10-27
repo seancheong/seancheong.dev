@@ -17,6 +17,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Pencil1Icon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 
 export const Email = () => {
@@ -40,6 +41,9 @@ export const Email = () => {
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     // TODO: implement the send email function
     console.log(values);
+
+    form.reset();
+    toast(t('Email.toast.success'));
   };
 
   return (

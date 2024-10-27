@@ -1,3 +1,4 @@
+import { Toaster } from '@/components/ui/sonner';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
@@ -37,6 +38,7 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider messages={messages}>
           {children}
+          <Toaster />
         </NextIntlClientProvider>
       </body>
     </html>
