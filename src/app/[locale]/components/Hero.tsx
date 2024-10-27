@@ -1,7 +1,9 @@
 import { Button } from '@/components/ui/button';
-import { DownloadIcon, EnvelopeClosedIcon } from '@radix-ui/react-icons';
+import { DownloadIcon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+
+import { SendEmailButton } from './SendEmailButton';
 
 export const Hero = () => {
   const t = useTranslations('Common');
@@ -15,15 +17,13 @@ export const Hero = () => {
       </div>
 
       <div className="flex flex-col justify-center gap-2 md:flex-row">
-        <Button className="gap-2 rounded-xl" asChild>
-          <Link href="#">
-            <EnvelopeClosedIcon />
-            <span>{t('send-email')}</span>
-          </Link>
-        </Button>
+        <SendEmailButton className="gap-2 rounded-xl" />
 
         <Button variant="secondary" className="gap-2 rounded-xl" asChild>
-          <Link href="#">
+          <Link
+            href="https://sean-certification.s3.ap-southeast-1.amazonaws.com/Cheong+Zhen+Xiong+Senior+Software+Engineer+Resume.pdf"
+            target="_blank"
+          >
             <DownloadIcon />
             <span>{t('download-cv')}</span>
           </Link>

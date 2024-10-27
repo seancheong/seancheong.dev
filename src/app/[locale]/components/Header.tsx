@@ -34,7 +34,11 @@ export const Header = () => {
   return (
     <header className="sticky top-0 z-10 flex items-center rounded-b-xl bg-background pt-6">
       <nav className="flex w-full items-center justify-between rounded-2xl border bg-container p-2">
-        <Button variant="secondary" size="icon" className="rounded-xl" asChild>
+        <Button
+          size="icon"
+          className="rounded-xl bg-accent text-accent-foreground hover:bg-accent/90"
+          asChild
+        >
           <Link href="/">
             <span className="text-lg">SC</span>
             <span className="sr-only">{t('name')}</span>
