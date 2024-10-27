@@ -1,3 +1,5 @@
+import { Reveal } from '@/components/Reveal';
+
 import { Contact } from './components/Contact';
 import { Email } from './components/Email';
 import { Experience } from './components/Experience';
@@ -9,35 +11,51 @@ import { Projects } from './components/Projects';
 export default function Home() {
   return (
     <div className="mx-auto max-w-[768px] px-6">
-      <Header />
+      <Reveal direction="top" delay={0.3}>
+        <Header />
+      </Reveal>
 
       <main className="mb-24 flex flex-col gap-2">
         <section id="hero" className="pt-20">
-          <Hero />
+          <Reveal direction="bottom" delay={0.4}>
+            <Hero />
+          </Reveal>
         </section>
 
         <section id="profile" className="pt-20">
-          <Profile />
+          <Reveal direction="bottom">
+            <Profile />
+          </Reveal>
         </section>
 
         <section id="experience">
-          <Experience />
+          <Reveal direction="bottom">
+            <Experience />
+          </Reveal>
         </section>
 
         <section id="projects">
-          <Projects />
+          <Reveal direction="bottom">
+            <Projects />
+          </Reveal>
         </section>
 
         <section id="contact" className="flex flex-col gap-10 pt-20">
-          <Contact />
+          <Reveal direction="bottom">
+            <Contact />
+          </Reveal>
 
-          <Email />
+          <Reveal direction="bottom">
+            <Email />
+          </Reveal>
         </section>
       </main>
 
-      <footer className="border-t-[1px] border-secondary-foreground/30 py-6 text-center">
-        © 2024, All Right Reserved
-      </footer>
+      <Reveal direction="bottom">
+        <footer className="border-t-[1px] border-secondary-foreground/30 py-6 text-center">
+          © 2024, All Right Reserved
+        </footer>
+      </Reveal>
     </div>
   );
 }
