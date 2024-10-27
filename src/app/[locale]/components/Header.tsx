@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -8,23 +10,32 @@ import {
 import { HamburgerMenuIcon, PaperPlaneIcon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useCallback } from 'react';
 
 const sections = [
-  { name: 'home', url: '#' },
-  { name: 'profile', url: '#' },
-  { name: 'experience', url: '#' },
-  { name: 'education', url: '#' },
-  { name: 'skills', url: '#' },
+  { name: 'home', url: '/' },
+  { name: 'profile', url: '#profile' },
+  { name: 'experience', url: '#experience' },
+  { name: 'projects', url: '#projects' },
 ] as const;
 
 export const Header = () => {
   const t = useTranslations('Common');
+  const router = useRouter();
+
+  const handleScrollFromDropDown = useCallback(
+    // Need to add a small timeout here for the scrolling,
+    // if not, it will scroll back to top automatically
+    (url: string) => setTimeout(() => router.push(url), 100),
+    [router],
+  );
 
   return (
     <header className="sticky top-0 z-10 flex items-center rounded-b-xl bg-background pt-6">
       <nav className="flex w-full items-center justify-between rounded-2xl border bg-container p-2">
         <Button variant="secondary" size="icon" className="rounded-xl" asChild>
-          <Link href="#">
+          <Link href="/">
             <span className="text-lg">SC</span>
             <span className="sr-only">{t('name')}</span>
           </Link>
@@ -32,14 +43,14 @@ export const Header = () => {
 
         <div className="hidden gap-6 md:flex">
           {sections.map((section) => (
-            <Link href="#" key={section.name}>
+            <Link href={section.url} key={section.name}>
               {t(`nav.${section.name}`)}
             </Link>
           ))}
         </div>
 
         <Button className="hidden gap-2 rounded-xl md:flex" asChild>
-          <Link href="#">
+          <Link href="#contact">
             <PaperPlaneIcon />
             {t('contact-me')}
           </Link>
@@ -59,11 +70,18 @@ export const Header = () => {
 
           <DropdownMenuContent align="end" className="text-foreground">
             {sections.map((section) => (
-              <DropdownMenuItem key={section.name} asChild>
-                <Link href="#">{t(`nav.${section.name}`)}</Link>
+              <DropdownMenuItem
+                key={section.name}
+                onSelect={() => handleScrollFromDropDown(section.url)}
+              >
+                {t(`nav.${section.name}`)}
               </DropdownMenuItem>
             ))}
-            <DropdownMenuItem>{t('contact-me')}</DropdownMenuItem>
+            <DropdownMenuItem
+              onSelect={() => handleScrollFromDropDown('#contact')}
+            >
+              {t('contact-me')}
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </nav>
