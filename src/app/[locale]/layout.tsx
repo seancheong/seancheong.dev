@@ -17,9 +17,32 @@ const geistMono = localFont({
   weight: '100 900',
 });
 
+const name = 'Sean Cheong Zhen Xiong';
+const description = 'Senior Software Engineer/Team Lead';
+
 export const metadata: Metadata = {
-  title: 'Sean Cheong Zhen Xiong',
-  description: 'A software engineer',
+  title: name,
+  description,
+  keywords:
+    'Senior Software Engineer, UI Engineer, Team Lead, javascript, typescript, react, nextjs, vuejs, angular, portfolio',
+  authors: [{ name, url: 'https://github.com/seancheong' }],
+  openGraph: {
+    title: name,
+    description,
+    url: 'https://www.seancheong.dev',
+    type: 'website',
+    images: [
+      {
+        url: 'https://www.seancheong.dev/screenshot.png',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: name,
+    description,
+    images: ['https://www.seancheong.dev/screenshot.png'],
+  },
 };
 
 export default async function RootLayout({
