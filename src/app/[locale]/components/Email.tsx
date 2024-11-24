@@ -13,6 +13,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Textarea } from '@/components/ui/textarea';
+import { sendEmail } from '@/features/email/actions/emailAction';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Pencil1Icon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
@@ -38,12 +39,19 @@ export const Email = () => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    // TODO: implement the send email function
-    console.log(values);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const { name, email, message } = values;
 
-    form.reset();
-    toast(t('Email.toast.success'));
+    try {
+      await sendEmail(name, email, message);
+
+      form.reset();
+      toast.success(t('Email.toast.success'));
+    } catch (error) {
+      console.error(error);
+
+      toast.error(t('Email.toast.error'));
+    }
   };
 
   return (
