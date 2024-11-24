@@ -8,7 +8,7 @@ export const SendEmailButton = (props: ButtonProps) => {
 
   return (
     <Button asChild {...props}>
-      <Link href={`mailto:me@seancheong.dev?subject=${t('subject')}`}>
+      <Link href={`mailto:${process.env.SOURCE_EMAIL}?subject=${t('subject')}`}>
         <EnvelopeClosedIcon />
         {t('send-email')}
       </Link>

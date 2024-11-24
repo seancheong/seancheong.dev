@@ -87,7 +87,8 @@
       }
     },
     "toast": {
-      "success": "Email sent successfully"
+      "success": "Email sent successfully",
+      "error": "Failed to send email, please try again later"
     }
   }
 }
