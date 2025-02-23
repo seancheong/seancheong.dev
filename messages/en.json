@@ -30,7 +30,7 @@
   },
   "Profile": {
     "title": "Professional Profile",
-    "detail": "With {year} years of hands-on experience in software development. Currently serve as the Frontend Lead in Woven by Toyota Japan. Well versed in frontend related technologies. Extensive background in full cycle of software development process including requirements gathering, design, coding, testing and maintenance.",
+    "detail": "With over {year} years of hands-on experience in software development, I currently serve as a Senior Frontend Software Engineer at Woven by Toyota, Japan. Well-versed in frontend technologies, with an extensive background in the full software development lifecycle, including requirements gathering, design, coding, testing, and maintenance.",
     "location": "Based in Tokyo, Japan"
   },
   "Experience": {
@@ -61,8 +61,13 @@
     "description": "Let's start a productive conversation",
     "aria-labels": {
       "linkedin": "LinkedIn's profile",
-      "github": "Github's profile",
+      "github": "GitHub's profile",
       "medium": "Medium's profile"
+    },
+    "tooltips": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "medium": "Medium"
     }
   },
   "Email": {
