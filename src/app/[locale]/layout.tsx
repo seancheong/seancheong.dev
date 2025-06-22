@@ -32,11 +32,7 @@ export const metadata: Metadata = {
     description,
     url: 'https://www.seancheong.dev',
     type: 'website',
-    images: [
-      {
-        url: 'https://www.seancheong.dev/screenshot.png',
-      },
-    ],
+    images: [{ url: 'https://www.seancheong.dev/screenshot.png' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -46,13 +42,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
-  children,
-  params: { locale },
-}: Readonly<{
-  children: React.ReactNode;
-  params: { locale: string };
-}>) {
+export default async function RootLayout(
+  props: Readonly<{
+    children: React.ReactNode;
+    params: Promise<{ locale: string }>;
+  }>,
+) {
+  const { locale } = await props.params;
+
+  const { children } = props;
+
   const messages = await getMessages();
 
   return (
