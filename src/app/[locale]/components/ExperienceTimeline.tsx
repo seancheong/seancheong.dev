@@ -8,10 +8,7 @@ import { twMerge } from 'tailwind-merge';
 const companyExperiences = [
   {
     id: 4,
-    duration: {
-      from: new Date('2023-10-01'),
-      to: null,
-    },
+    duration: { from: new Date('2023-10-01'), to: null },
     title: 'senior-software-engineer',
     company: {
       name: 'Woven by TOYOTA',
@@ -23,10 +20,7 @@ const companyExperiences = [
   },
   {
     id: 3,
-    duration: {
-      from: new Date('2018-09-01'),
-      to: new Date('2023-10-01'),
-    },
+    duration: { from: new Date('2018-09-01'), to: new Date('2023-10-01') },
     title: 'frontend-team-lead',
     company: {
       name: 'Asurion',
@@ -46,10 +40,7 @@ const companyExperiences = [
   },
   {
     id: 2,
-    duration: {
-      from: new Date('2015-10-01'),
-      to: new Date('2018-09-01'),
-    },
+    duration: { from: new Date('2015-10-01'), to: new Date('2018-09-01') },
     title: 'software-engineer-2',
     company: {
       name: 'Thermo Fisher Scientific',
@@ -61,10 +52,7 @@ const companyExperiences = [
   },
   {
     id: 1,
-    duration: {
-      from: new Date('2011-07-01'),
-      to: new Date('2015-10-01'),
-    },
+    duration: { from: new Date('2011-07-01'), to: new Date('2015-10-01') },
     title: 'software-engineer',
     company: {
       name: 'Fuji Xerox',
@@ -82,10 +70,7 @@ export const ExperienceTimeline = () => {
 
   const formatDuration = useCallback(
     (duration: (typeof companyExperiences)[number]['duration']) => {
-      const dateTimeFormat = {
-        year: 'numeric',
-        month: 'short',
-      } as const;
+      const dateTimeFormat = { year: 'numeric', month: 'short' } as const;
 
       // past duration
       if (duration.to) {

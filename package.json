@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -23,12 +23,13 @@
     "date-fns": "^4.1.0",
     "framer-motion": "^11.11.10",
     "isomorphic-dompurify": "^2.16.0",
+    "jsdom": "^26.1.0",
     "lucide-react": "^0.452.0",
-    "next": "14.2.22",
-    "next-intl": "^3.21.1",
-    "next-themes": "^0.3.0",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "15.3.4",
+    "next-intl": "^4.1.0",
+    "next-themes": "^0.4.6",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "react-hook-form": "^7.53.1",
     "sharp": "^0.33.5",
     "sonner": "^1.5.0",
@@ -37,17 +38,25 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.29.0",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.14",
-    "eslint-plugin-prettier": "^5.2.1",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "@typescript-eslint/eslint-plugin": "^8.34.1",
+    "@typescript-eslint/parser": "^8.34.1",
+    "eslint": "^9.29.0",
+    "eslint-config-next": "15.3.4",
+    "eslint-plugin-prettier": "^5.5.0",
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6"
   }
 }

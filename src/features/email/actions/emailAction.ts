@@ -21,15 +21,9 @@ export const sendEmail = async (
 ) => {
   const input = {
     Source: sourceEmail,
-    Destination: {
-      ToAddresses: [sender],
-      CcAddresses: [ccEmail],
-    },
+    Destination: { ToAddresses: [sender], CcAddresses: [ccEmail] },
     Message: {
-      Subject: {
-        Data: `Thank you for connecting, ${name}`,
-        Charset: 'UTF-8',
-      },
+      Subject: { Data: `Thank you for connecting, ${name}`, Charset: 'UTF-8' },
       Body: {
         Html: {
           Data: `Hope you are doing well. I am writing this email to thank you for connecting me. <br /><br /> Below is your message: <br /> <cite>${bodyText}</cite>`,
