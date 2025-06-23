@@ -21,8 +21,8 @@ export const Profile = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-12 rounded-lg border bg-container p-6 md:flex-1">
-        <div className="h-fit w-fit rounded-xl border bg-icon p-3">
+      <div className="bg-container flex flex-col gap-12 rounded-lg border p-6 md:flex-1">
+        <div className="bg-icon h-fit w-fit rounded-xl border p-3">
           <AvatarIcon className="h-6 w-6" />
         </div>
 

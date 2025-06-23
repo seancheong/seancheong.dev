@@ -13,7 +13,7 @@ const currentYear = getYear(new Date());
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-[768px] px-6">
+    <div className="mx-auto max-w-5xl px-6">
       <Reveal direction="top" delay={0.3}>
         <Header />
       </Reveal>
@@ -55,7 +55,7 @@ export default function Home() {
       </main>
 
       <Reveal direction="bottom">
-        <footer className="border-t-[1px] border-secondary-foreground/30 py-6 text-center">
+        <footer className="border-secondary-foreground/30 border-t py-6 text-center">
           {`© ${currentYear}, All Right Reserved`}
         </footer>
       </Reveal>

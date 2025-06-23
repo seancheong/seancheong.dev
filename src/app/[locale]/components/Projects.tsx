@@ -9,15 +9,15 @@ export const Projects = () => {
 
   return (
     <div className="mt-2 flex flex-col gap-2">
-      <div className="flex items-center gap-6 rounded-lg border bg-container p-6">
-        <div className="h-fit w-fit rounded-xl border bg-icon p-3">
+      <div className="bg-container flex items-center gap-6 rounded-lg border p-6">
+        <div className="bg-icon h-fit w-fit rounded-xl border p-3">
           <BackpackIcon className="h-6 w-6" />
         </div>
 
         <h2>{t('title')}</h2>
       </div>
 
-      <BentoGrid className="mx-auto max-w-4xl md:auto-rows-[20rem]">
+      <BentoGrid className="mx-auto md:auto-rows-[20rem]">
         {projects.map((item, i) => (
           <BentoGridItem
             key={i}
@@ -40,14 +40,14 @@ interface ProjectImageProps {
 }
 
 const ProjectImage = ({ src, alt, className = '' }: ProjectImageProps) => (
-  <div className="relative h-full min-h-[6rem] w-full overflow-hidden rounded-[8px] border border-border">
+  <div className="border-border relative h-full min-h-24 w-full overflow-hidden rounded-[8px] border">
     <Image
       src={src}
       alt={alt}
       fill
       sizes="(max-width: 768px) 100vw, 50vw"
       className={twMerge(
-        'transform bg-icon object-cover transition duration-500 ease-in-out group-hover:scale-125',
+        'bg-icon transform object-cover transition duration-500 ease-in-out group-hover:scale-125',
         className,
       )}
     />
@@ -65,7 +65,7 @@ const projects = [
       />
     ),
     url: 'https://script-blender-rvaw-git-main-sean-cheong-zhen-xiongs-projects.vercel.app/',
-    className: 'md:col-span-2',
+    className: 'md:col-span-3',
   },
   {
     name: 'cashush',
@@ -77,7 +77,7 @@ const projects = [
       />
     ),
     url: 'https://cashush.com',
-    className: 'md:col-span-1',
+    className: 'md:col-span-2',
   },
   {
     name: 'chroma-ui',
@@ -89,7 +89,7 @@ const projects = [
       />
     ),
     url: 'https://github.com/seancheong/chroma-ui',
-    className: 'md:col-span-1',
+    className: 'md:col-span-2',
   },
   {
     name: 'vue-task-management',
@@ -101,6 +101,6 @@ const projects = [
       />
     ),
     url: 'https://github.com/seancheong/vue-task-management',
-    className: 'md:col-span-2',
+    className: 'md:col-span-3',
   },
 ] as const;

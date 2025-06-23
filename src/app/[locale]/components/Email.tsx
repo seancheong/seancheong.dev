@@ -54,10 +54,10 @@ export const Email = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="rounded-lg border bg-container"
+        className="bg-container rounded-lg border"
       >
         <div className="flex flex-col gap-6 p-6">
-          <div className="h-fit w-fit rounded-xl border bg-icon p-3">
+          <div className="bg-icon h-fit w-fit rounded-xl border p-3">
             <Pencil1Icon className="h-6 w-6" />
           </div>
 
