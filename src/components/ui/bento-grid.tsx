@@ -43,7 +43,7 @@ export const BentoGridItem = ({
       href={url}
       target="_blank"
       className={cn(
-        'group bg-container row-span-1 flex flex-col justify-between space-y-4 rounded-lg border p-4',
+        'group row-span-1 flex flex-col justify-between space-y-4 rounded-lg border bg-transparent p-4',
         className,
       )}
     >

@@ -1,7 +1,7 @@
 {
   "Common": {
     "name": "Sean Cheong",
-    "title": "Senior Software Engineer",
+    "title": "Hi, I'm Sean,",
     "contact-me": "Contact Me",
     "subject": "Hi, I would like to connect with you",
     "toggle-menu": "Toggle user menu",
@@ -15,6 +15,13 @@
       "frontend-team-lead": "Frontend Team Lead",
       "software-engineer-2": "Software Engineer II",
       "software-engineer": "Software Engineer"
+    },
+    "roles": {
+      "frontend-team-lead": "Frontend Team Lead",
+      "frontend-engineer": "Frontend Engineer",
+      "fullstack-engineer": "Fullstack Engineer",
+      "aws-solutions-architect": "Certified AWS Solutions Architect",
+      "scrum-master": "Certified ScrumMaster"
     },
     "locations": {
       "tokyo": "Tokyo, Japan",
@@ -30,7 +37,7 @@
   },
   "Profile": {
     "title": "Professional Profile",
-    "detail": "With over {year} years of hands-on experience in software development, I currently serve as a Senior Frontend Software Engineer at Woven by Toyota, Japan. Well-versed in frontend technologies, with an extensive background in the full software development lifecycle, including requirements gathering, design, coding, testing, and maintenance.",
+    "detail": "With over <b>{year} years</b> of hands-on experience in software development, I currently serve as a <b>Senior Frontend Software Engineer</b> at <b>Woven by Toyota, Japan</b>. Well-versed in frontend technologies, with an extensive background in the full software development lifecycle, including requirements gathering, design, coding, testing, and maintenance.",
     "location": "Based in Tokyo, Japan"
   },
   "Experience": {

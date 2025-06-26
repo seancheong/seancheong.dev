@@ -1,5 +1,9 @@
+import {
+  MotionHighlight,
+  MotionHighlightItem,
+} from '@/components/animate-ui/effects/motion-highlight';
+import { Paintbrush } from '@/components/animate-ui/icons/paintbrush';
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
-import { BackpackIcon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
@@ -11,24 +15,27 @@ export const Projects = () => {
     <div className="mt-2 flex flex-col gap-2">
       <div className="bg-container flex items-center gap-6 rounded-lg border p-6">
         <div className="bg-icon h-fit w-fit rounded-xl border p-3">
-          <BackpackIcon className="h-6 w-6" />
+          <Paintbrush animateOnHover animateOnTap className="h-6 w-6" />
         </div>
 
         <h2>{t('title')}</h2>
       </div>
 
-      <BentoGrid className="mx-auto md:auto-rows-[20rem]">
-        {projects.map((item, i) => (
-          <BentoGridItem
-            key={i}
-            title={t(`${item.name}.title`)}
-            description={t(`${item.name}.description`)}
-            image={item.image}
-            url={item.url}
-            className={item.className}
-          />
-        ))}
-      </BentoGrid>
+      <MotionHighlight mode="parent" hover className="bg-secondary rounded-lg">
+        <BentoGrid className="mx-auto md:auto-rows-[20rem]">
+          {projects.map((item, i) => (
+            <MotionHighlightItem key={i} asChild>
+              <BentoGridItem
+                title={t(`${item.name}.title`)}
+                description={t(`${item.name}.description`)}
+                image={item.image}
+                url={item.url}
+                className={item.className}
+              />
+            </MotionHighlightItem>
+          ))}
+        </BentoGrid>
+      </MotionHighlight>
     </div>
   );
 };
@@ -47,7 +54,7 @@ const ProjectImage = ({ src, alt, className = '' }: ProjectImageProps) => (
       fill
       sizes="(max-width: 768px) 100vw, 50vw"
       className={twMerge(
-        'bg-icon transform object-cover transition duration-500 ease-in-out group-hover:scale-125',
+        'bg-icon transform object-cover transition duration-500 ease-in-out group-hover:scale-105',
         className,
       )}
     />

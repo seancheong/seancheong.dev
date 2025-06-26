@@ -1,5 +1,6 @@
 'use client';
 
+import { Send } from '@/components/animate-ui/icons/send';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -15,7 +16,7 @@ import { Separator } from '@/components/ui/separator';
 import { Textarea } from '@/components/ui/textarea';
 import { sendEmail } from '@/features/email/actions/emailAction';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Pencil1Icon } from '@radix-ui/react-icons';
+import { PaperPlaneIcon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -58,7 +59,7 @@ export const Email = () => {
       >
         <div className="flex flex-col gap-6 p-6">
           <div className="bg-icon h-fit w-fit rounded-xl border p-3">
-            <Pencil1Icon className="h-6 w-6" />
+            <Send animateOnHover animateOnTap className="h-6 w-6" />
           </div>
 
           <div className="flex flex-col gap-3">
@@ -132,7 +133,11 @@ export const Email = () => {
             )}
           />
 
-          <Button type="submit" className="w-full md:ml-auto md:w-fit">
+          <Button
+            type="submit"
+            className="w-full gap-2 hover:cursor-pointer md:ml-auto md:w-fit"
+          >
+            <PaperPlaneIcon />
             {t('Common.send-message')}
           </Button>
         </div>

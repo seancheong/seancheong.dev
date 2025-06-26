@@ -1,5 +1,5 @@
+import { Forklift } from '@/components/animate-ui/icons/forklift';
 import { Separator } from '@/components/ui/separator';
-import { ArchiveIcon } from '@radix-ui/react-icons';
 import DOMPurify from 'isomorphic-dompurify';
 import { useTranslations } from 'next-intl';
 
@@ -12,7 +12,7 @@ export const Experience = () => {
     <div className="bg-container rounded-lg border">
       <div className="flex flex-col gap-6 p-6">
         <div className="bg-icon h-fit w-fit rounded-xl border p-3">
-          <ArchiveIcon className="h-6 w-6" />
+          <Forklift animateOnHover animateOnTap className="h-6 w-6" />
         </div>
 
         <div className="flex flex-col gap-6">

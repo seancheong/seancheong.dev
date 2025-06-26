@@ -1,5 +1,7 @@
-import { AvatarIcon, SewingPinIcon } from '@radix-ui/react-icons';
+import { MapPin } from '@/components/animate-ui/icons/map-pin';
+import { UserRound } from '@/components/animate-ui/icons/user-round';
 import { differenceInYears } from 'date-fns';
+import DOMPurify from 'isomorphic-dompurify';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
@@ -21,21 +23,32 @@ export const Profile = () => {
         />
       </div>
 
-      <div className="bg-container flex flex-col gap-12 rounded-lg border p-6 md:flex-1">
+      <div className="bg-container flex flex-col gap-6 rounded-lg border p-6 md:flex-1">
         <div className="bg-icon h-fit w-fit rounded-xl border p-3">
-          <AvatarIcon className="h-6 w-6" />
+          <UserRound animateOnHover animateOnTap className="h-6 w-6" />
         </div>
 
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-3">
             <h2>{t('title')}</h2>
 
-            <p>{t('detail', { year: experienceYears })}</p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(
+                  t.raw('detail').replace('{year}', experienceYears.toString()),
+                ),
+              }}
+            />
           </div>
 
           <div className="flex items-center gap-2">
-            <SewingPinIcon />
-            <span className="text-xs">{t('location')}</span>
+            <MapPin
+              animateOnDefault="path-loop"
+              animateOnHover="wiggle"
+              animateOnTap="wiggle"
+              className="h-6 w-6"
+            />
+            <span className="text-xs font-semibold">{t('location')}</span>
           </div>
         </div>
       </div>

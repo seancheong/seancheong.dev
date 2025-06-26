@@ -3,7 +3,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip';
+} from '@/components/animate-ui/radix/tooltip';
 import { GitHubLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons';
 import { SquareLibraryIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -98,7 +98,7 @@ const LinkTooltip = ({
   <Tooltip>
     <TooltipTrigger asChild>{children}</TooltipTrigger>
 
-    <TooltipContent>
+    <TooltipContent side="bottom">
       <p>{tooltipText}</p>
     </TooltipContent>
   </Tooltip>
