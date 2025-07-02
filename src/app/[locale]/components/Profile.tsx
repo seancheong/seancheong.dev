@@ -4,6 +4,7 @@ import { differenceInYears } from 'date-fns';
 import DOMPurify from 'isomorphic-dompurify';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { useMemo } from 'react';
 
 const experienceYears = differenceInYears(new Date(), new Date(2011, 6, 1));
 
@@ -33,11 +34,16 @@ export const Profile = () => {
             <h2>{t('title')}</h2>
 
             <p
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(
-                  t.raw('detail').replace('{year}', experienceYears.toString()),
-                ),
-              }}
+              dangerouslySetInnerHTML={useMemo(
+                () => ({
+                  __html: DOMPurify.sanitize(
+                    t
+                      .raw('detail')
+                      .replace('{year}', experienceYears.toString()),
+                  ),
+                }),
+                [t],
+              )}
             />
           </div>
 

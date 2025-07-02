@@ -55,8 +55,13 @@ const animations = {
 } as const;
 
 function IconComponent({ size, ...props }: ForkliftProps) {
-  const { controls } = useAnimateIconContext();
-  const variants = getVariants(animations);
+  const {
+    controls,
+    animation: animationType,
+    loop,
+    loopDelay,
+  } = useAnimateIconContext();
+  const variants = getVariants(animations, animationType, loop, loopDelay);
 
   return (
     <motion.svg

@@ -149,22 +149,34 @@ function AnimateIcon({
     if (animateOnDefault) startAnimation(animateOnDefault);
   }, [animateOnDefault, startAnimation]);
 
-  const handleMouseEnter = (e: MouseEvent) => {
-    if (animateOnHover) startAnimation(animateOnHover);
-    children.props?.onMouseEnter?.(e);
-  };
-  const handleMouseLeave = (e: MouseEvent) => {
-    if (animateOnHover || animateOnTap) stopAnimation();
-    children.props?.onMouseLeave?.(e);
-  };
-  const handlePointerDown = (e: PointerEvent) => {
-    if (animateOnTap) startAnimation(animateOnTap);
-    children.props?.onPointerDown?.(e);
-  };
-  const handlePointerUp = (e: PointerEvent) => {
-    if (animateOnTap) stopAnimation();
-    children.props?.onPointerUp?.(e);
-  };
+  const handleMouseEnter = React.useCallback(
+    (e: MouseEvent) => {
+      if (animateOnHover) startAnimation(animateOnHover);
+      children.props?.onMouseEnter?.(e);
+    },
+    [animateOnHover, children.props, startAnimation],
+  );
+  const handleMouseLeave = React.useCallback(
+    (e: MouseEvent) => {
+      if (animateOnHover || animateOnTap) stopAnimation();
+      children.props?.onMouseLeave?.(e);
+    },
+    [animateOnHover, animateOnTap, children.props, stopAnimation],
+  );
+  const handlePointerDown = React.useCallback(
+    (e: PointerEvent) => {
+      if (animateOnTap) startAnimation(animateOnTap);
+      children.props?.onPointerDown?.(e);
+    },
+    [animateOnTap, children.props, startAnimation],
+  );
+  const handlePointerUp = React.useCallback(
+    (e: PointerEvent) => {
+      if (animateOnTap) stopAnimation();
+      children.props?.onPointerUp?.(e);
+    },
+    [animateOnTap, children.props, stopAnimation],
+  );
 
   const child = React.Children.only(children);
   const cloned = React.cloneElement(child, {
@@ -292,10 +304,7 @@ function IconWrapper<T extends string>({
 function getVariants<
   V extends { default: T; [key: string]: T },
   T extends Record<string, Variants>,
->(animations: V): T {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { animation: animationType, loop, loopDelay } = useAnimateIconContext();
-
+>(animations: V, animationType: string, loop: boolean, loopDelay: number): T {
   let result: T;
 
   if (animationType in staticAnimations) {

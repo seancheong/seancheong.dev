@@ -77,17 +77,10 @@ function TypingText({
       setDisplayedText('');
     }
 
-    if (isInView) {
-      const timeoutId = setTimeout(() => {
-        setStarted(true);
-      }, delay);
-      return () => clearTimeout(timeoutId);
-    } else {
-      const timeoutId = setTimeout(() => {
-        setStarted(true);
-      }, delay);
-      return () => clearTimeout(timeoutId);
-    }
+    const timeoutId = setTimeout(() => {
+      setStarted(true);
+    }, delay);
+    return () => clearTimeout(timeoutId);
   }, [isInView, delay, animateOnChange]);
 
   React.useEffect(() => {

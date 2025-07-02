@@ -1,6 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import { throttle } from 'lodash';
 import { AnimatePresence, Transition, motion } from 'motion/react';
 import * as React from 'react';
 
@@ -194,16 +195,16 @@ function MotionHighlight<T extends string>({
     const container = localRef.current;
     if (!container) return;
 
-    const onScroll = () => {
+    const throttledOnScroll = throttle(() => {
       if (!activeValue) return;
       const activeEl = container.querySelector<HTMLElement>(
         `[data-value="${activeValue}"][data-highlight="true"]`,
       );
       if (activeEl) safeSetBounds(activeEl.getBoundingClientRect());
-    };
+    }, 16); // ~60fps
 
-    container.addEventListener('scroll', onScroll, { passive: true });
-    return () => container.removeEventListener('scroll', onScroll);
+    container.addEventListener('scroll', throttledOnScroll, { passive: true });
+    return () => container.removeEventListener('scroll', throttledOnScroll);
   }, [mode, activeValue, safeSetBounds]);
 
   const render = React.useCallback(
@@ -391,31 +392,26 @@ function MotionHighlightItem({
 
   React.useEffect(() => {
     if (mode !== 'parent') return;
-    let rafId: number;
-    let previousBounds: Bounds | null = null;
     const shouldUpdateBounds =
       forceUpdateBounds === true ||
       (contextForceUpdateBounds && forceUpdateBounds !== false);
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.target === localRef.current && isActive) {
+          setBounds(entry.target.getBoundingClientRect());
+        }
+      }
+    });
+
+    if (shouldUpdateBounds && localRef.current) {
+      resizeObserver.observe(localRef.current);
+    }
 
     const updateBounds = () => {
       if (!localRef.current) return;
 
       const bounds = localRef.current.getBoundingClientRect();
-
-      if (shouldUpdateBounds) {
-        if (
-          previousBounds &&
-          previousBounds.top === bounds.top &&
-          previousBounds.left === bounds.left &&
-          previousBounds.width === bounds.width &&
-          previousBounds.height === bounds.height
-        ) {
-          rafId = requestAnimationFrame(updateBounds);
-          return;
-        }
-        previousBounds = bounds;
-        rafId = requestAnimationFrame(updateBounds);
-      }
 
       setBounds(bounds);
     };
@@ -425,7 +421,9 @@ function MotionHighlightItem({
       setActiveClassName(activeClassName ?? '');
     } else if (!activeValue) clearBounds();
 
-    if (shouldUpdateBounds) return () => cancelAnimationFrame(rafId);
+    return () => {
+      resizeObserver.disconnect();
+    };
   }, [
     mode,
     isActive,
