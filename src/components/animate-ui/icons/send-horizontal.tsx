@@ -1,14 +1,13 @@
 'use client';
 
-import * as React from 'react';
-import { motion, type Variants } from 'motion/react';
-
 import {
+  type IconProps,
+  IconWrapper,
   getVariants,
   useAnimateIconContext,
-  IconWrapper,
-  type IconProps,
 } from '@/components/animate-ui/icons/icon';
+import { type Variants, motion } from 'motion/react';
+import * as React from 'react';
 
 type SendHorizontalProps = IconProps<keyof typeof animations>;
 
