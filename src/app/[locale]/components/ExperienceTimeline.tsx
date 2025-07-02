@@ -88,15 +88,15 @@ export const ExperienceTimeline = () => {
       {companyExperiences.map(({ id, duration, title, company, skills }) => (
         <div key={id} className="flex">
           <div className="pt-2">
-            <div className="h-full w-[2px] bg-icon" />
+            <div className="bg-icon h-full w-[2px]" />
           </div>
 
           <div className="-ml-1 flex w-full items-start justify-start gap-4">
-            <div className="mt-1 h-[6px] w-[6px] rounded-full bg-timeline" />
+            <div className="bg-timeline mt-1 h-[6px] w-[6px] rounded-full" />
 
             <div key={id} className="flex w-full flex-col gap-3">
               <div className="flex flex-col gap-3 md:flex-row-reverse md:justify-between">
-                <div className="flex w-fit gap-2 rounded-[8px] border border-primary/20 px-3 py-1">
+                <div className="border-primary/20 flex w-fit gap-2 rounded-[8px] border px-3 py-1">
                   <CalendarIcon />
 
                   <p className="text-xs">{formatDuration(duration)}</p>
@@ -117,12 +117,12 @@ export const ExperienceTimeline = () => {
 
               <p className="text-xs">{t(`locations.${company.location}`)}</p>
 
-              <div className="grid grid-cols-auto-fill gap-1">
+              <div className="grid-cols-auto-fill grid gap-1">
                 {skills.map((skill) => (
                   <Badge
                     key={skill}
                     variant="outline"
-                    className="justify-center rounded-sm border-accent-foreground bg-accent text-accent-foreground"
+                    className="border-accent-foreground bg-accent text-accent-foreground justify-center rounded-sm"
                   >
                     {skill}
                   </Badge>

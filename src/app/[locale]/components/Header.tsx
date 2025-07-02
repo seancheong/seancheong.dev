@@ -32,15 +32,15 @@ export const Header = () => {
   );
 
   return (
-    <header className="sticky top-0 z-10 flex items-center rounded-b-xl bg-background pt-6">
-      <nav className="flex w-full items-center justify-between rounded-2xl border bg-container p-2">
+    <header className="bg-background sticky top-0 z-10 flex items-center rounded-b-xl pt-6">
+      <nav className="bg-container flex w-full items-center justify-between rounded-2xl border p-2">
         <Button
           size="icon"
-          className="rounded-xl bg-accent text-accent-foreground hover:bg-accent/90"
+          className="gradient-brand flex h-8 w-8 items-center justify-center rounded-md"
           asChild
         >
           <Link href="/">
-            <span className="text-lg">SC</span>
+            <span className="text-sm font-bold text-white">SC</span>
             <span className="sr-only">{t('name')}</span>
           </Link>
         </Button>

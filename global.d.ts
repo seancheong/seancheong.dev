@@ -1,9 +1,8 @@
-import en from './messages/en.json';
+import messages from './messages/en.json';
 
-type Messages = typeof en;
-
-declare global {
-  // use type safe message keys with `next-intl`
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-  interface IntlMessages extends Messages {}
+declare module 'next-intl' {
+  interface AppConfig {
+    // use type safe message keys with `next-intl`
+    Messages: typeof messages;
+  }
 }
