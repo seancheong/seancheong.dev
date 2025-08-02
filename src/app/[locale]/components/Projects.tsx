@@ -63,6 +63,18 @@ const ProjectImage = ({ src, alt, className = '' }: ProjectImageProps) => (
 
 const projects = [
   {
+    name: 'tripa',
+    image: (
+      <ProjectImage
+        src="/images/tripa.png"
+        alt="Tripa"
+        className="md:object-contain"
+      />
+    ),
+    url: 'https://tripa-six.vercel.app/',
+    className: 'md:col-span-5',
+  },
+  {
     name: 'script-blender',
     image: (
       <ProjectImage
