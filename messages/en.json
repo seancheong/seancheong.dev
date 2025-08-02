@@ -51,6 +51,10 @@
       "title": "Script Blender",
       "description": "A dynamic web-based coding platform for JavaScript and TypeScript, featuring real-time execution with Monaco Editor integration"
     },
+    "tripa": {
+      "title": "Tripa",
+      "description": "Keep track of your travels and adventures with Tripa. Add locations and notes to create a personalized travel journal that tells your story."
+    },
     "cashush": {
       "title": "Cashush",
       "description": "A brief overview of Cashush: easy & accessible lending solutions."
