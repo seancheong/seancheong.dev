@@ -83,7 +83,7 @@ const projects = [
         className="md:object-fill"
       />
     ),
-    url: 'https://script-blender-rvaw-git-main-sean-cheong-zhen-xiongs-projects.vercel.app/',
+    url: 'https://script-blender.vercel.app/',
     className: 'md:col-span-3',
   },
   {
