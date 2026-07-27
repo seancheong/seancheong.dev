@@ -6,6 +6,7 @@ import {
   Minus,
 } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { prototypeContent as content } from './prototype-content';
 
@@ -223,12 +224,12 @@ export function VariantEvidenceSpine() {
                     Decision narrative, tradeoffs, verified outcomes, and the
                     remaining limitation.
                   </p>
-                  <a
-                    href="#"
+                  <Link
+                    href="/en/work/takonbini?journey=A"
                     className="flex items-center gap-2 text-xs font-medium text-white"
                   >
-                    Case study <ArrowUpRight className="size-3.5" />
-                  </a>
+                    Read case study <ArrowUpRight className="size-3.5" />
+                  </Link>
                 </div>
               </div>
             </div>
