@@ -8,10 +8,22 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Profile } from './components/Profile';
 import { Projects } from './components/Projects';
+import { DarkFirstPrototype } from './components/dark-first-prototype/DarkFirstPrototype';
 
 const currentYear = getYear(new Date());
 
-export default function Home() {
+interface HomeProps {
+  searchParams: Promise<{ variant?: string | string[] }>;
+}
+
+export default async function Home({ searchParams }: HomeProps) {
+  if (process.env.NODE_ENV !== 'production') {
+    const rawVariant = (await searchParams).variant;
+    const variant = Array.isArray(rawVariant) ? rawVariant[0] : rawVariant;
+
+    return <DarkFirstPrototype variant={variant} />;
+  }
+
   return (
     <div className="mx-auto max-w-5xl px-6">
       <Reveal direction="top" delay={0.3}>
