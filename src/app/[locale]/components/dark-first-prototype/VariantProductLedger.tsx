@@ -6,16 +6,24 @@ import {
   MoveUpRight,
 } from 'lucide-react';
 import Image from 'next/image';
+import type { CSSProperties } from 'react';
 
 import { prototypeContent as content } from './prototype-content';
 
-export function VariantProductLedger() {
+interface ProductLedgerLayoutProps {
+  accent: string;
+}
+
+export function ProductLedgerLayout({ accent }: ProductLedgerLayoutProps) {
   return (
-    <div className="min-h-screen bg-[#07090c] font-sans text-[#f4f5f6] selection:bg-[#78f0bf] selection:text-black">
+    <div
+      className="min-h-screen bg-[#07090c] font-sans text-[#f4f5f6] selection:bg-[var(--prototype-accent)] selection:text-black"
+      style={{ '--prototype-accent': accent } as CSSProperties}
+    >
       <header className="sticky top-0 z-20 border-b border-white/10 bg-[#07090c]/90 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-5 lg:px-10">
           <a href="#top" className="flex items-center gap-3 font-semibold">
-            <span className="grid size-8 place-items-center rounded-md bg-[#78f0bf] text-xs font-black text-black">
+            <span className="grid size-8 place-items-center rounded-md bg-[var(--prototype-accent)] text-xs font-black text-black">
               SC
             </span>
             <span className="hidden text-sm sm:inline">Sean Cheong</span>
@@ -36,7 +44,7 @@ export function VariantProductLedger() {
           </nav>
           <a
             href="#contact"
-            className="flex items-center gap-2 rounded-md border border-white/15 px-3 py-2 text-xs font-medium hover:border-[#78f0bf]/70"
+            className="flex items-center gap-2 rounded-md border border-white/15 px-3 py-2 text-xs font-medium hover:border-[var(--prototype-accent)]"
           >
             Let&apos;s talk <MoveUpRight className="size-3.5" />
           </a>
@@ -46,7 +54,7 @@ export function VariantProductLedger() {
       <main id="top" className="mx-auto max-w-[1440px] px-5 pb-28 lg:px-10">
         <section className="grid min-h-[660px] items-stretch border-x border-white/10 lg:grid-cols-[1.35fr_0.65fr]">
           <div className="flex flex-col justify-between border-b border-white/10 p-6 sm:p-10 lg:border-r lg:border-b-0 lg:p-14">
-            <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-[#78f0bf] uppercase">
+            <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-[var(--prototype-accent)] uppercase">
               <CircleDot className="size-3.5" /> Available for senior frontend
               roles
             </div>
@@ -87,7 +95,7 @@ export function VariantProductLedger() {
                   0{index + 1} / SIGNAL
                 </span>
                 <div>
-                  <div className="font-mono text-4xl tracking-[-0.08em] text-[#78f0bf]">
+                  <div className="font-mono text-4xl tracking-[-0.08em] text-[var(--prototype-accent)]">
                     {item.value}
                   </div>
                   <div className="mt-1 text-xs text-white/45">{item.label}</div>
@@ -115,7 +123,9 @@ export function VariantProductLedger() {
                 <h2 className="mt-12 text-lg font-medium text-white">
                   {item.role}
                 </h2>
-                <p className="mt-2 text-xs text-[#78f0bf]">{item.company}</p>
+                <p className="mt-2 text-xs text-[var(--prototype-accent)]">
+                  {item.company}
+                </p>
                 <p className="mt-5 max-w-xs text-sm leading-6 text-white/45">
                   {item.scope}
                 </p>
@@ -130,7 +140,7 @@ export function VariantProductLedger() {
         >
           <div className="mb-7 flex items-end justify-between">
             <div>
-              <p className="font-mono text-[10px] tracking-[0.18em] text-[#78f0bf] uppercase">
+              <p className="font-mono text-[10px] tracking-[0.18em] text-[var(--prototype-accent)] uppercase">
                 01 / Featured case study
               </p>
               <h2 className="mt-3 text-3xl font-medium tracking-tight text-white">
@@ -144,7 +154,13 @@ export function VariantProductLedger() {
           <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0c1014]">
             <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
               <div className="relative min-h-[370px] overflow-hidden border-b border-white/10 p-8 lg:border-r lg:border-b-0">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(120,240,191,0.14),transparent_34%),linear-gradient(135deg,transparent_0_48%,rgba(255,255,255,0.035)_49%_50%,transparent_51%_100%)] bg-[length:auto,34px_34px]" />
+                <div
+                  className="absolute inset-0 bg-[length:auto,34px_34px]"
+                  style={{
+                    backgroundImage:
+                      'radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--prototype-accent) 14%, transparent), transparent 34%), linear-gradient(135deg, transparent 0 48%, rgba(255,255,255,0.035) 49% 50%, transparent 51% 100%)',
+                  }}
+                />
                 <div className="relative flex h-full flex-col justify-between">
                   <div className="flex justify-between font-mono text-[10px] text-white/35">
                     <span>PRODUCT SURFACE / PROTOTYPE TREATMENT</span>
@@ -179,7 +195,7 @@ export function VariantProductLedger() {
                       key={outcome}
                       className="flex gap-4 rounded-lg border border-white/10 bg-white/[0.02] p-4"
                     >
-                      <span className="font-mono text-[10px] text-[#78f0bf]">
+                      <span className="font-mono text-[10px] text-[var(--prototype-accent)]">
                         V-{index + 1}
                       </span>
                       <p className="text-xs leading-5 text-white/65">
@@ -227,7 +243,7 @@ export function VariantProductLedger() {
                   <p className="mt-3 text-sm leading-6 text-white/45">
                     {project.summary}
                   </p>
-                  <p className="mt-6 text-xs text-[#78f0bf]">
+                  <p className="mt-6 text-xs text-[var(--prototype-accent)]">
                     {project.evidence}
                   </p>
                 </div>
@@ -241,7 +257,7 @@ export function VariantProductLedger() {
           className="grid border-x border-b border-white/10 lg:grid-cols-[0.55fr_1.45fr]"
         >
           <div className="border-b border-white/10 p-8 lg:border-r lg:border-b-0">
-            <p className="font-mono text-[10px] tracking-widest text-[#78f0bf] uppercase">
+            <p className="font-mono text-[10px] tracking-widest text-[var(--prototype-accent)] uppercase">
               Selected articles
             </p>
             <h2 className="mt-4 text-3xl tracking-tight text-white">
@@ -271,7 +287,7 @@ export function VariantProductLedger() {
           id="contact"
           className="border-x border-b border-white/10 px-6 py-24 text-center"
         >
-          <p className="font-mono text-[10px] tracking-[0.18em] text-[#78f0bf] uppercase">
+          <p className="font-mono text-[10px] tracking-[0.18em] text-[var(--prototype-accent)] uppercase">
             Open to the right conversation
           </p>
           <h2 className="mx-auto mt-5 max-w-3xl text-4xl tracking-tight text-white sm:text-6xl">
@@ -279,7 +295,7 @@ export function VariantProductLedger() {
           </h2>
           <a
             href="mailto:hello@example.com"
-            className="mt-9 inline-flex items-center gap-2 rounded-md bg-[#78f0bf] px-5 py-3 text-sm font-semibold text-black"
+            className="mt-9 inline-flex items-center gap-2 rounded-md bg-[var(--prototype-accent)] px-5 py-3 text-sm font-semibold text-black"
           >
             Start a conversation <ArrowRight className="size-4" />
           </a>
@@ -287,4 +303,8 @@ export function VariantProductLedger() {
       </main>
     </div>
   );
+}
+
+export function VariantProductLedger() {
+  return <ProductLedgerLayout accent="#78f0bf" />;
 }

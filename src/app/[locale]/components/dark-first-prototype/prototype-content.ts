@@ -72,7 +72,7 @@ export const prototypeContent = {
 export const prototypeVariants = [
   { key: 'A', name: 'Product Ledger' },
   { key: 'B', name: 'Editorial Dispatch' },
-  { key: 'C', name: 'Evidence Spine' },
+  { key: 'C', name: 'Violet Ledger' },
 ] as const;
 
 export type PrototypeVariant = (typeof prototypeVariants)[number]['key'];
