@@ -29,7 +29,7 @@
   content: '';
   background: radial-gradient(
     circle,
-    rgb(141 162 255 / 0.022),
+    rgb(141 162 255 / 0.011),
     transparent 68%
   );
   transform: translate(
