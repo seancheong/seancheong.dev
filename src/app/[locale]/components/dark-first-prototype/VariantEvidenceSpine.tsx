@@ -1,4 +1,10 @@
-import { ArrowRight, ArrowUpRight, Check, Menu, Minus } from 'lucide-react';
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  CircleDot,
+  Minus,
+} from 'lucide-react';
 import Image from 'next/image';
 
 import { prototypeContent as content } from './prototype-content';
@@ -6,82 +12,131 @@ import { prototypeContent as content } from './prototype-content';
 export function VariantEvidenceSpine() {
   return (
     <div className="min-h-screen bg-[#0a0c10] font-sans text-[#edf0f7] selection:bg-[#8da2ff] selection:text-black">
-      <header className="fixed top-0 left-0 z-20 flex h-16 w-full items-center justify-between border-b border-[#8da2ff]/15 bg-[#0a0c10]/92 px-5 backdrop-blur-xl lg:hidden">
-        <span className="font-mono text-xs font-semibold">SC / PORTFOLIO</span>
-        <button
-          type="button"
-          aria-label="Open navigation"
-          className="grid size-9 place-items-center rounded-full border border-white/15"
-        >
-          <Menu className="size-4" />
-        </button>
+      <header className="sticky top-0 z-20 border-b border-[#8da2ff]/15 bg-[#0a0c10]/92 backdrop-blur-xl">
+        <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-5 lg:px-10">
+          <a
+            href="#spine-top"
+            className="flex items-center gap-3 font-mono text-xs font-semibold"
+          >
+            <span className="grid size-8 place-items-center rounded-md bg-[#8da2ff] text-[10px] font-black text-[#0a0c10]">
+              SC
+            </span>
+            <span className="hidden sm:inline">Sean Cheong</span>
+          </a>
+          <nav
+            className="hidden items-center gap-7 text-xs text-white/45 md:flex"
+            aria-label="Primary"
+          >
+            {content.nav.map((item) => (
+              <a key={item} href={`#spine-${item.toLowerCase()}`}>
+                {item}
+              </a>
+            ))}
+          </nav>
+          <a
+            href="#spine-contact"
+            className="flex items-center gap-2 rounded-md border border-white/15 px-3 py-2 text-xs text-white/70"
+          >
+            Let&apos;s talk <ArrowUpRight className="size-3.5" />
+          </a>
+        </div>
       </header>
 
-      <div className="lg:grid lg:grid-cols-[minmax(330px,34vw)_1fr]">
-        <aside className="flex min-h-screen flex-col justify-between border-r border-[#8da2ff]/15 bg-[#0d1016] px-6 pt-28 pb-24 lg:sticky lg:top-0 lg:h-screen lg:px-10 lg:pt-10">
+      <section
+        id="spine-top"
+        className="mx-auto grid min-h-[680px] max-w-[1440px] border-x border-b border-[#8da2ff]/15 lg:grid-cols-[1.35fr_0.65fr]"
+      >
+        <div className="flex flex-col justify-between border-b border-[#8da2ff]/15 p-6 sm:p-10 lg:border-r lg:border-b-0 lg:p-14">
           <div>
-            <div className="hidden items-center justify-between lg:flex">
-              <a href="#spine-top" className="font-mono text-xs font-semibold">
-                SC / PORTFOLIO
-              </a>
-              <span className="size-2 rounded-full bg-[#83f2b4] shadow-[0_0_18px_#83f2b4]" />
+            <div className="flex items-center gap-2 font-mono text-[10px] tracking-[0.18em] text-[#83f2b4] uppercase">
+              <CircleDot className="size-3.5" /> Available for senior frontend
+              roles
             </div>
-            <p className="mt-16 font-mono text-[10px] tracking-[0.18em] text-[#8da2ff] uppercase lg:mt-24">
-              Senior frontend engineer · Tokyo
+            <p className="mt-16 font-mono text-[10px] leading-5 tracking-[0.16em] text-white/35 uppercase lg:mt-20">
+              Frontend engineering / Team leadership / Product judgment
             </p>
-            <h1 className="mt-6 max-w-xl text-[clamp(2.8rem,5.6vw,5.5rem)] leading-[0.95] font-medium tracking-[-0.055em] text-white">
-              Evidence over adjectives.
+            <h1 className="mt-7 max-w-5xl text-[clamp(3.3rem,6.4vw,6.2rem)] leading-[0.96] font-medium tracking-[-0.06em] text-white">
+              {content.positioning}
             </h1>
-            <p className="mt-8 max-w-lg text-base leading-7 text-[#edf0f7]/55">
-              {content.positioning} {content.supporting}
+            <p className="mt-8 max-w-2xl text-base leading-7 text-[#edf0f7]/55 sm:text-lg">
+              {content.supporting}
             </p>
           </div>
-          <div>
-            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10">
-              {content.credibility.map((item) => (
-                <div key={item.label} className="bg-[#0d1016] p-4">
-                  <span className="font-mono text-xl text-white">
-                    {item.value}
-                  </span>
-                  <span className="mt-1 block text-[10px] leading-4 text-white/35">
-                    {item.label}
-                  </span>
-                </div>
-              ))}
+          <div className="mt-12 flex flex-wrap gap-3">
+            <a
+              href="#spine-work"
+              className="flex items-center justify-center gap-2 rounded-md bg-[#8da2ff] px-5 py-3 text-xs font-semibold text-[#0a0c10]"
+            >
+              Explore my work <ArrowRight className="size-3.5" />
+            </a>
+            <a
+              href="#spine-contact"
+              className="flex items-center justify-center rounded-md border border-white/15 px-5 py-3 text-xs text-white/65"
+            >
+              Let&apos;s talk
+            </a>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 lg:grid-cols-1">
+          {content.credibility.map((item, index) => (
+            <div
+              key={item.label}
+              className="flex min-h-32 flex-col justify-between border-r border-b border-[#8da2ff]/15 bg-[#0d1016] p-6 last:border-b-0 even:border-r-0 lg:min-h-0 lg:border-r-0 lg:p-8"
+            >
+              <span className="font-mono text-[9px] tracking-widest text-white/25">
+                0{index + 1} / SIGNAL
+              </span>
+              <div>
+                <span className="font-mono text-3xl tracking-[-0.07em] text-[#83f2b4]">
+                  {item.value}
+                </span>
+                <span className="mt-1 block text-[10px] leading-4 text-white/35">
+                  {item.label}
+                </span>
+              </div>
             </div>
-            <div className="mt-5 flex gap-3">
-              <a
-                href="#spine-work"
-                className="flex flex-1 items-center justify-center gap-2 rounded-md bg-[#8da2ff] px-4 py-3 text-xs font-semibold text-[#0a0c10]"
-              >
-                Explore work <ArrowRight className="size-3.5" />
-              </a>
-              <a
-                href="#spine-contact"
-                className="flex flex-1 items-center justify-center rounded-md border border-white/15 px-4 py-3 text-xs text-white/65"
-              >
-                Let&apos;s talk
-              </a>
-            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-[1440px] border-x border-[#8da2ff]/15 lg:grid lg:grid-cols-[260px_1fr]">
+        <aside className="border-b border-[#8da2ff]/15 bg-[#0d1016] p-6 lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:border-r lg:border-b-0 lg:p-8">
+          <p className="font-mono text-[9px] tracking-[0.18em] text-[#8da2ff] uppercase">
+            Evidence spine
+          </p>
+          <p className="mt-5 text-3xl leading-tight tracking-[-0.04em] text-white">
+            Evidence over adjectives.
+          </p>
+          <p className="mt-5 text-xs leading-5 text-white/38">
+            A scannable record of leadership, ownership, and communication.
+          </p>
+          <ol className="mt-10 space-y-4 border-t border-white/10 pt-6 font-mono text-[9px] tracking-wider text-white/35 uppercase">
+            <li>
+              <a href="#spine-experience">01 / Leadership</a>
+            </li>
+            <li>
+              <a href="#spine-work">02 / Ownership</a>
+            </li>
+            <li>
+              <a href="#spine-articles">03 / Writing</a>
+            </li>
+          </ol>
+          <div className="mt-10 flex items-center gap-2 font-mono text-[9px] tracking-wider text-[#83f2b4] uppercase lg:absolute lg:bottom-8">
+            <span className="size-2 rounded-full bg-[#83f2b4] shadow-[0_0_14px_#83f2b4]" />
+            Available · Tokyo
           </div>
         </aside>
 
-        <main id="spine-top" className="min-w-0">
-          <nav
-            className="sticky top-0 z-10 hidden h-16 items-center justify-between border-b border-[#8da2ff]/15 bg-[#0a0c10]/90 px-8 backdrop-blur-xl lg:flex"
-            aria-label="Primary"
-          >
+        <main className="min-w-0">
+          <div className="sticky top-16 z-10 hidden h-12 items-center justify-between border-b border-[#8da2ff]/15 bg-[#0a0c10]/90 px-8 backdrop-blur-xl lg:flex">
             <span className="font-mono text-[10px] tracking-widest text-white/30 uppercase">
               Evidence stream / 2026
             </span>
-            <div className="flex items-center gap-7 text-xs text-white/45">
-              {content.nav.map((item) => (
-                <a key={item} href={`#spine-${item.toLowerCase()}`}>
-                  {item}
-                </a>
-              ))}
-            </div>
-          </nav>
+            <span className="font-mono text-[9px] tracking-widest text-white/20 uppercase">
+              Scroll to inspect
+            </span>
+          </div>
 
           <section
             id="spine-experience"
