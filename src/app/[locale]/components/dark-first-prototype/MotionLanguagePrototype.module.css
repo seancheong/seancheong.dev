@@ -1,0 +1,171 @@
+.root {
+  --motion-fast: 120ms;
+  --motion-base: 220ms;
+  --motion-slow: 440ms;
+  --motion-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --pointer-x: 50%;
+  --pointer-y: 20%;
+  overflow-x: clip;
+  isolation: isolate;
+}
+
+.root :global(a),
+.root :global(button),
+.root :global(article) {
+  transition-duration: var(--motion-base);
+  transition-timing-function: var(--motion-ease);
+}
+
+.immediate :global(a) {
+  transition-property: color, background-color, border-color, opacity;
+}
+
+.immediate::before {
+  position: fixed;
+  z-index: 0;
+  width: 34rem;
+  height: 34rem;
+  pointer-events: none;
+  content: '';
+  background: radial-gradient(
+    circle,
+    rgb(141 162 255 / 0.022),
+    transparent 68%
+  );
+  transform: translate(
+    calc(var(--pointer-x) - 50%),
+    calc(var(--pointer-y) - 50%)
+  );
+  transition: transform 110ms linear;
+}
+
+.immediate :global(section),
+.immediate :global(article) {
+  opacity: 0.55;
+  transform: translateY(12px);
+  transition-property: opacity, transform, border-color;
+  transition-duration: var(--motion-base);
+}
+
+.immediate :global([data-motion-visible='true']) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.immediate :global(a:hover) {
+  border-color: rgb(141 162 255 / 0.58);
+  color: white;
+}
+
+.immediate :global(article:hover) {
+  border-color: rgb(141 162 255 / 0.34);
+}
+
+.guided::before {
+  position: fixed;
+  inset: 0 auto auto 0;
+  z-index: 40;
+  width: var(--scroll-progress, 0%);
+  height: 2px;
+  content: '';
+  background: #8da2ff;
+  box-shadow: 0 0 16px rgb(141 162 255 / 0.8);
+  transition: width 80ms linear;
+}
+
+.guided :global(section),
+.guided :global(article) {
+  opacity: 0.28;
+  transform: translateY(24px);
+  transition-property: opacity, transform, border-color;
+  transition-duration: var(--motion-slow);
+}
+
+.guided :global([data-motion-visible='true']) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.guided :global(article:nth-child(2)) {
+  transition-delay: 70ms;
+}
+
+.guided :global(article:nth-child(3)) {
+  transition-delay: 140ms;
+}
+
+.tactile::before {
+  position: fixed;
+  z-index: 0;
+  width: 38rem;
+  height: 38rem;
+  pointer-events: none;
+  content: '';
+  background: radial-gradient(circle, rgb(141 162 255 / 0.1), transparent 66%);
+  transform: translate(
+    calc(var(--pointer-x) - 50%),
+    calc(var(--pointer-y) - 50%)
+  );
+  transition: transform 90ms linear;
+}
+
+.tactile :global(article),
+.tactile :global(a) {
+  transition-property:
+    transform, color, background-color, border-color, box-shadow;
+}
+
+.tactile :global(article:hover) {
+  border-color: rgb(141 162 255 / 0.48);
+  box-shadow: 0 18px 60px rgb(0 0 0 / 0.28);
+  transform: translateY(-4px);
+}
+
+.tactile :global(a:hover svg) {
+  transform: translate(2px, -2px);
+}
+
+.tactile :global(svg) {
+  transition: transform var(--motion-fast) var(--motion-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .root :global(*) {
+    scroll-behavior: auto !important;
+    transition-delay: 0ms !important;
+    transition-duration: 1ms !important;
+  }
+
+  .guided :global(section),
+  .guided :global(article) {
+    opacity: 1;
+    transform: none;
+  }
+
+  .tactile::before {
+    display: none;
+  }
+
+  .immediate::before {
+    display: none;
+  }
+
+  .immediate :global(section),
+  .immediate :global(article) {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .immediate::before,
+  .tactile::before {
+    display: none;
+  }
+
+  .tactile :global(article:hover) {
+    box-shadow: none;
+    transform: none;
+  }
+}

@@ -13,15 +13,21 @@ import { DarkFirstPrototype } from './components/dark-first-prototype/DarkFirstP
 const currentYear = getYear(new Date());
 
 interface HomeProps {
-  searchParams: Promise<{ variant?: string | string[] }>;
+  searchParams: Promise<{
+    variant?: string | string[];
+    motion?: string | string[];
+  }>;
 }
 
 export default async function Home({ searchParams }: HomeProps) {
   if (process.env.NODE_ENV !== 'production') {
-    const rawVariant = (await searchParams).variant;
+    const params = await searchParams;
+    const rawVariant = params.variant;
+    const rawMotion = params.motion;
     const variant = Array.isArray(rawVariant) ? rawVariant[0] : rawVariant;
+    const motion = Array.isArray(rawMotion) ? rawMotion[0] : rawMotion;
 
-    return <DarkFirstPrototype variant={variant} />;
+    return <DarkFirstPrototype variant={variant} motion={motion} />;
   }
 
   return (
