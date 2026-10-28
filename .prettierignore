@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+build/
+.pnpm-store/
+coverage/
+pnpm-lock.yaml
+next-env.d.ts
+CONTEXT.md
