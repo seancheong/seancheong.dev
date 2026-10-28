@@ -52,7 +52,7 @@ test('server response retains navigation without JavaScript', async ({
       page
         .getByRole('navigation')
         .getByRole('link', { name: 'Projects', exact: true }),
-    ).toHaveAttribute('href', '#projects');
+    ).toHaveAttribute('href', '/en#projects');
     await expect(page.getByRole('main')).toHaveCount(1);
   } finally {
     await context.close();

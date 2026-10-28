@@ -1,6 +1,8 @@
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 
+import contentBoundaries from './eslint.content-boundaries.mjs';
+
 const restricted = (group, message) => ({ group, message });
 const rules = (patterns) => ({
   'no-restricted-imports': ['error', { patterns }],
@@ -11,8 +13,14 @@ const dependencyConfig = [
   {
     files: ['src/**/*.{ts,tsx}'],
     languageOptions: { parser: tsParser },
-    plugins: { '@typescript-eslint': tsPlugin },
-    rules: { '@typescript-eslint/no-explicit-any': 'error' },
+    plugins: {
+      '@typescript-eslint': tsPlugin,
+      'portfolio-content': contentBoundaries,
+    },
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'error',
+      'portfolio-content/imports': 'error',
+    },
   },
   {
     files: ['src/portfolio-content/**/*.{ts,tsx}'],

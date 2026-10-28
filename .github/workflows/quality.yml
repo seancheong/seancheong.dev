@@ -146,3 +146,20 @@ jobs:
             artifacts/probes/lighthouse
           retention-days: 14
           if-no-files-found: error
+
+  release-content:
+    name: Reviewed release content
+    if: github.event_name == 'workflow_dispatch' && inputs.enforce_release_budgets
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: pnpm/action-setup@v4.1.0
+        with:
+          version: 10.20.0
+          run_install: false
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm content:check --release

@@ -1,17 +1,12 @@
+import { getLocaleMessages, isPublishedLocale } from '@/portfolio-content';
 import { getRequestConfig } from 'next-intl/server';
-
-import { routing } from './routing';
+import { notFound } from 'next/navigation';
 
 export default getRequestConfig(async ({ requestLocale }) => {
-  let locale = await requestLocale;
-
-  // Ensure that the incoming locale is valid
-  if (!locale || !routing.locales.includes(locale as 'en')) {
-    locale = routing.defaultLocale;
-  }
-
-  return {
-    locale,
-    messages: (await import(`../../messages/${locale}.json`)).default,
-  };
+  const locale = (await requestLocale) ?? 'en';
+  if (!isPublishedLocale(locale)) notFound();
+  const result = getLocaleMessages(locale);
+  if (result.status !== 'found')
+    throw new Error('Published locale content failed validation');
+  return { locale, messages: result.value };
 });

@@ -5,7 +5,7 @@ export const widths = [360, 390, 768, 1024, 1440] as const;
 export const localeFixtures = {
   en: 'Personal Projects',
   ja: 'プロジェクトと意思決定',
-  zh: '项目与工程决策',
+  'zh-Hans': '项目与工程决策',
 } as const;
 export const localePath = (path = '', locale = 'en') => `/${locale}${path}`;
 

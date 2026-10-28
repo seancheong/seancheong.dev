@@ -7,17 +7,16 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Link, useRouter } from '@/i18n/routing';
 import { HamburgerMenuIcon, PaperPlaneIcon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 
 const sections = [
   { name: 'home', url: '/' },
-  { name: 'profile', url: '#profile' },
-  { name: 'experience', url: '#experience' },
-  { name: 'projects', url: '#projects' },
+  { name: 'profile', url: '/#profile' },
+  { name: 'experience', url: '/#experience' },
+  { name: 'projects', url: '/#projects' },
 ] as const;
 
 export const Header = () => {
@@ -54,7 +53,7 @@ export const Header = () => {
         </div>
 
         <Button className="hidden gap-2 rounded-xl md:flex" asChild>
-          <Link href="#contact">
+          <Link href="/#contact">
             <PaperPlaneIcon />
             {t('contact-me')}
           </Link>
@@ -82,7 +81,7 @@ export const Header = () => {
               </DropdownMenuItem>
             ))}
             <DropdownMenuItem
-              onSelect={() => handleScrollFromDropDown('#contact')}
+              onSelect={() => handleScrollFromDropDown('/#contact')}
             >
               {t('contact-me')}
             </DropdownMenuItem>
