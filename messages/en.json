@@ -49,23 +49,45 @@
     "title": "Personal Projects",
     "script-blender": {
       "title": "Script Blender",
-      "description": "A dynamic web-based coding platform for JavaScript and TypeScript, featuring real-time execution with Monaco Editor integration"
+      "description": "A dynamic web-based coding platform for JavaScript and TypeScript, featuring real-time execution with Monaco Editor integration",
+      "coverAlt": "Script Blender",
+      "seoTitle": "Script Blender",
+      "seoDescription": "A dynamic web-based coding platform for JavaScript and TypeScript, featuring real-time execution with Monaco Editor integration"
     },
     "tripa": {
       "title": "Tripa",
-      "description": "Keep track of your travels and adventures with Tripa. Add locations and notes to create a personalized travel journal that tells your story."
+      "description": "Keep track of your travels and adventures with Tripa. Add locations and notes to create a personalized travel journal that tells your story.",
+      "coverAlt": "Tripa",
+      "seoTitle": "Tripa",
+      "seoDescription": "Keep track of your travels and adventures with Tripa. Add locations and notes to create a personalized travel journal that tells your story."
     },
     "cashush": {
       "title": "Cashush",
-      "description": "A brief overview of Cashush: easy & accessible lending solutions."
+      "description": "A brief overview of Cashush: easy & accessible lending solutions.",
+      "coverAlt": "Cashush",
+      "seoTitle": "Cashush",
+      "seoDescription": "A brief overview of Cashush: easy & accessible lending solutions."
     },
     "chroma-ui": {
       "title": "Chroma UI",
-      "description": "A design system built with React, Tailwind CSS and Storybook."
+      "description": "A design system built with React, Tailwind CSS and Storybook.",
+      "coverAlt": "Chroma UI",
+      "seoTitle": "Chroma UI",
+      "seoDescription": "A design system built with React, Tailwind CSS and Storybook."
     },
     "vue-task-management": {
       "title": "Vue Task Management",
-      "description": "A Vue 3 Composition API library designed for task management processes"
+      "description": "A Vue 3 Composition API library designed for task management processes",
+      "coverAlt": "Vue Task Management",
+      "seoTitle": "Vue Task Management",
+      "seoDescription": "A Vue 3 Composition API library designed for task management processes"
+    },
+    "takonbini": {
+      "title": "Takonbini",
+      "description": "A catalog of Japanese convenience-store products.",
+      "coverAlt": "Takonbini",
+      "seoTitle": "Takonbini",
+      "seoDescription": "A catalog of Japanese convenience-store products."
     }
   },
   "Contact": {
@@ -106,6 +128,25 @@
     "toast": {
       "success": "Email sent successfully",
       "error": "Failed to send email, please try again later"
+    }
+  },
+  "Content": {
+    "availableInEnglish": "Available in English"
+  },
+  "Site": {
+    "title": "Sean Cheong Zhen Xiong",
+    "description": "Senior Software Engineer/Team Lead",
+    "keywords": "Senior Software Engineer, UI Engineer, Team Lead, javascript, typescript, react, nextjs, vuejs, angular, portfolio"
+  },
+  "Article": {
+    "stale-while-revalidate": {
+      "title": "Understanding the Importance of Caching and the Stale-While-Revalidate Pattern"
+    },
+    "auto-save-hooks": {
+      "title": "React Hooks in Action: Implementing Auto-Save with Custom Hooks"
+    },
+    "vue-task-management": {
+      "title": "Building a Task Management Library with Vue 3 and Composition API"
     }
   }
 }

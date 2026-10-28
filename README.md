@@ -56,3 +56,10 @@ See [the quality harness guide](docs/quality.md) for unit/component, cross-brows
 axe, Lighthouse, release-budget enforcement, failure probes and artifact commands.
 The current homepage proves the harness wiring; passing harness checks do not
 certify completion of the redesign or release gates.
+
+## Portfolio Content
+
+See [the content guide](docs/content.md) for the typed content interface, locale
+availability, explicit server MDX loaders and publication rules. Run
+`pnpm content:check` for current content and `pnpm content:check --release` for
+flagship/article publication readiness. English is currently the only public locale.
