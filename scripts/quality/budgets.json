@@ -1,0 +1,22 @@
+{
+  "runs": 3,
+  "mobile": {
+    "performance": 90,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "desktop": {
+    "performance": 95,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "lcpMs": 2500,
+  "cls": 0.1,
+  "tbtMs": 200,
+  "firstLoadJsBytes": 180000,
+  "homeTargetJsBytes": 160000,
+  "reviewIncreaseJsBytes": 10000,
+  "lcpMediaBytes": 250000
+}

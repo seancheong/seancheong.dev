@@ -17,6 +17,9 @@ export default defineConfig([
   {
     ignores: [
       '.next/**',
+      'artifacts/**',
+      'test-results/**',
+      'playwright-report/**',
       'out/**',
       'build/**',
       '.pnpm-store/**',

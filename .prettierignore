@@ -7,3 +7,6 @@ coverage/
 pnpm-lock.yaml
 next-env.d.ts
 CONTEXT.md
+artifacts/
+test-results/
+playwright-report/
