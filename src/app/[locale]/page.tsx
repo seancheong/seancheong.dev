@@ -14,9 +14,7 @@ const currentYear = getYear(new Date());
 export default function Home() {
   return (
     <div className="mx-auto max-w-5xl px-6">
-      <Reveal direction="top" delay={0.3}>
-        <Header />
-      </Reveal>
+      <Header />
 
       <main className="mb-24 flex flex-col gap-2">
         <section id="hero" className="pt-20">
