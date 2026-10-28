@@ -1,0 +1,20 @@
+import { fileURLToPath } from 'node:url';
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } },
+  esbuild: { jsx: 'automatic' },
+  test: {
+    environment: 'jsdom',
+    include: ['tests/unit/**/*.test.{ts,tsx,mjs}'],
+    setupFiles: ['tests/unit/setup.ts'],
+    retry: 0,
+    reporters: ['default', 'junit'],
+    outputFile: {
+      junit:
+        process.env.HARNESS_FAILURE === 'unit'
+          ? 'artifacts/probes/unit/results.xml'
+          : 'artifacts/unit/results.xml',
+    },
+  },
+});

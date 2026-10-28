@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Quality reports
+/artifacts/
+/test-results/
+/playwright-report/

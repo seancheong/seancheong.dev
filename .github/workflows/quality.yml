@@ -1,0 +1,148 @@
+name: Portfolio Quality
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      enforce_release_budgets:
+        description: Enforce all release budgets (required before production promotion)
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit:
+    name: Unit and component contracts
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: pnpm/action-setup@v4.1.0
+        with:
+          version: 10.20.0
+          run_install: false
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test:unit
+      - name: Verify intentional failure and JUnit artifact
+        run: pnpm test:probes unit
+      - uses: actions/upload-artifact@v4.6.2
+        if: always()
+        with:
+          name: unit-reports
+          path: |
+            artifacts/unit
+            artifacts/probes/unit
+          retention-days: 14
+          if-no-files-found: error
+
+  browser:
+    name: Browser journeys (${{ matrix.engine }})
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, firefox, webkit]
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: pnpm/action-setup@v4.1.0
+        with:
+          version: 10.20.0
+          run_install: false
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/cache@v4.2.3
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('pnpm-lock.yaml') }}-${{ matrix.engine }}
+      - run: pnpm exec playwright install --with-deps ${{ matrix.engine }}
+      - run: pnpm build
+      - run: pnpm test:browser --project ${{ matrix.engine }}
+      - name: Verify intentional failure, screenshot and trace
+        if: matrix.engine == 'chromium'
+        run: pnpm test:probes browser
+      - uses: actions/upload-artifact@v4.6.2
+        if: always()
+        with:
+          name: browser-${{ matrix.engine }}
+          path: |
+            artifacts/browser*
+            artifacts/probes/browser*
+          retention-days: 14
+          if-no-files-found: error
+
+  accessibility:
+    name: Hydrated axe audit
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: pnpm/action-setup@v4.1.0
+        with:
+          version: 10.20.0
+          run_install: false
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm build
+      - run: pnpm test:axe
+      - name: Verify injected violation, JSON report, screenshot and trace
+        run: pnpm test:probes axe
+      - uses: actions/upload-artifact@v4.6.2
+        if: always()
+        with:
+          name: axe-reports
+          path: |
+            artifacts/axe*
+            artifacts/probes/axe*
+          retention-days: 14
+          if-no-files-found: error
+
+  performance:
+    name: Performance measurement (release budgets reported)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: pnpm/action-setup@v4.1.0
+        with:
+          version: 10.20.0
+          run_install: false
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm build
+      - name: Collect three mobile and three desktop samples per route
+        run: pnpm test:performance
+      - name: Verify intentional budget failure artifact
+        run: pnpm test:probes lighthouse
+      - name: Enforce release budgets
+        if: github.event_name == 'workflow_dispatch' && inputs.enforce_release_budgets
+        run: node scripts/quality/check-report.mjs
+      - uses: actions/upload-artifact@v4.6.2
+        if: always()
+        with:
+          name: lighthouse-reports
+          path: |
+            artifacts/lighthouse
+            artifacts/probes/lighthouse
+          retention-days: 14
+          if-no-files-found: error

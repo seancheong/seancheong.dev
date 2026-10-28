@@ -49,3 +49,10 @@ this initial rule setup does not certify completion of the architecture migratio
 The design prototype remains reference material on its original branch. The
 `codex/portfolio-toolchain` delivery branch starts from `main` and excludes those
 prototype changes.
+
+## Automated quality harness
+
+See [the quality harness guide](docs/quality.md) for unit/component, cross-browser,
+axe, Lighthouse, release-budget enforcement, failure probes and artifact commands.
+The current homepage proves the harness wiring; passing harness checks do not
+certify completion of the redesign or release gates.
