@@ -47,7 +47,12 @@ test('server navigation is visible without JavaScript @smoke', async ({
   const context = await browser.newContext({ javaScriptEnabled: false });
   try {
     const page = await context.newPage();
-    await page.goto('http://localhost:3100/en');
+    // Navigation must remain usable while project images are still loading.
+    await page.route('**/_next/image?*', () => {});
+    await page.goto('http://localhost:3100/en', {
+      waitUntil: 'domcontentloaded',
+    });
+    await expect(page.getByRole('navigation')).toBeVisible();
     await expect(
       page
         .getByRole('navigation')

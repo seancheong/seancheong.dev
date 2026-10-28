@@ -46,6 +46,19 @@ With pinned Node 22.23.4 and pnpm 10.20.0:
 - All 76 unit/interface tests, production build, content validation, formatting,
   lint, strict types and dependency checks passed.
 
+## Hosted WebKit navigation check
+
+The first fix-PR run passed axe, but its expanded WebKit no-JavaScript check
+timed out waiting for the page's `load` event. The trace shows the document and
+stylesheet returned 200 while a project image remained unfinished. The test had
+not yet reached its navigation assertions.
+
+A controlled WebKit reproduction with pending image requests timed out with the
+default load wait and passed with `domcontentloaded`. The permanent regression
+now deliberately keeps project media pending, waits for DOM content, and checks
+navigation visibility, its localized link and combined opacity. It does not wait
+for unrelated images, extend timeouts or retry assertions.
+
 Verification results and exact-head hosted evidence are recorded in the delivery
 issue. Implementation, PR checks, merge and production verification remain
 separate gates; this record does not claim deployment or user acceptance.
