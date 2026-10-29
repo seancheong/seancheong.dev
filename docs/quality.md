@@ -74,10 +74,12 @@ explicitly requires manual growth review; it does not claim a regression pass.
 
 The current real homepage proves browser navigation, mobile keyboard menu/focus,
 five viewport widths, aggregate overflow checks, reduced-motion navigation, and
-server navigation markup without JavaScript. Future Japanese/Chinese strings are
+visible server navigation without JavaScript in all three browser engines. The
+header renders without an entrance reveal, so its links do not depend on
+hydration or pass through low-contrast opacity states. Future Japanese/Chinese strings are
 injected only as test fixtures; they are not published locales. This is not a full
 responsive, motion, no-JavaScript visibility or screen-reader acceptance audit.
-Legacy reveal animations can still hide content without JavaScript; replacing them
+Legacy reveal animations can still hide other content without JavaScript; replacing them
 remains part of the approved motion/homepage work.
 
 The current route's axe scan has no rule exclusions or baseline suppressions.

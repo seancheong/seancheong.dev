@@ -41,19 +41,38 @@ for (const width of widths) {
   });
 }
 
-test('server response retains navigation without JavaScript', async ({
+test('server navigation is visible without JavaScript @smoke', async ({
   browser,
 }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   try {
     const page = await context.newPage();
-    await page.goto('http://localhost:3100/en');
+    // Navigation must remain usable while project images are still loading.
+    await page.route('**/_next/image?*', () => {});
+    await page.goto('http://localhost:3100/en', {
+      waitUntil: 'domcontentloaded',
+    });
+    await expect(page.getByRole('navigation')).toBeVisible();
     await expect(
       page
         .getByRole('navigation')
         .getByRole('link', { name: 'Projects', exact: true }),
     ).toHaveAttribute('href', '/en#projects');
     await expect(page.getByRole('main')).toHaveCount(1);
+    const opacity = await page
+      .getByRole('navigation')
+      .evaluate((navigation) => {
+        let opacity = 1;
+        for (
+          let element: Element | null = navigation;
+          element;
+          element = element.parentElement
+        ) {
+          opacity *= Number(getComputedStyle(element).opacity);
+        }
+        return opacity;
+      });
+    expect(opacity).toBe(1);
   } finally {
     await context.close();
   }
