@@ -17,3 +17,11 @@ test('hydrated home accessibility', async ({ page }, info) => {
   const result = await audit(page, info);
   expect(result.violations).toEqual([]);
 });
+
+test('mobile shell accessibility', async ({ page }, info) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await openHome(page);
+  await page.getByRole('button', { name: 'Menu', exact: true }).click();
+  const result = await audit(page, info);
+  expect(result.violations).toEqual([]);
+});
