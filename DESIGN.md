@@ -43,7 +43,8 @@ navigation labels. `--site-section-space` is 48–80px and `--site-gutter` is 24
 
 Use `Container` from `@/components/ui/container` for shared page width and gutters.
 Use an ordinary div inside a journey for local grids. Container accepts standard
-div props and `className`; it has no variants or portfolio content.
+div props and `className`; it has no variants or portfolio content. Shell CSS lives
+in `@layer components`, so caller utilities can override Container width/gutters.
 
 ```tsx
 // Correct: shared width comes from the foundation.
@@ -83,7 +84,9 @@ focusable element; its target must remain visible without JavaScript.
 
 Use native links for navigation and buttons for actions. Shell controls have 44px
 hit areas. Focus remains visible, including in reduced-motion mode. Smooth anchor
-scrolling is enabled only when reduced motion is not requested.
+scrolling is enabled only when reduced motion is not requested. The root
+`scroll-padding-top: 6rem` is the single sticky-header offset; do not add another
+scroll margin to fragment targets.
 
 Do not add entrance opacity/typing wrappers to the shell or critical text. Motion
 policy belongs to the Portfolio Motion delivery, not the shell. Rebuild approved

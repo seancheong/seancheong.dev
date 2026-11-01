@@ -180,7 +180,7 @@ test('mobile navigation and body content work without JavaScript @smoke', async 
       waitUntil: 'domcontentloaded',
     });
     await expect(
-      page.getByRole('heading', { name: "Hi, I'm Sean," }),
+      page.getByRole('heading', { name: "Hi, I'm Sean,", exact: true }),
     ).toBeVisible();
     await page.getByRole('button', { name: 'Menu', exact: true }).click();
     await page
@@ -231,4 +231,45 @@ test('navigation wraps longer future-locale labels without overflow', async ({
       ).toBeLessThanOrEqual(width);
     }
   }
+});
+
+test('anchor targets clear the sticky header with one offset @smoke', async ({
+  page,
+}) => {
+  for (const width of [390, 1024]) {
+    await page.setViewportSize({ width, height: 900 });
+    await openHome(page);
+    if (width < 768)
+      await page.getByRole('button', { name: 'Menu', exact: true }).click();
+    await page
+      .getByRole('navigation')
+      .getByRole('link', { name: 'Projects', exact: true })
+      .click();
+    await expect(page).toHaveURL(/#projects$/);
+    const headerBottom = await page
+      .getByRole('banner')
+      .evaluate((element) => element.getBoundingClientRect().bottom);
+    const targetTop = await page
+      .locator('#projects')
+      .evaluate((element) => element.getBoundingClientRect().top);
+    expect(targetTop).toBeGreaterThanOrEqual(headerBottom);
+    expect(targetTop).toBeLessThanOrEqual(headerBottom + 24);
+  }
+});
+
+test('Container caller utilities override foundation width and gutters', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await openHome(page);
+  await page.locator('.site-header .site-container').evaluate((element) => {
+    element.classList.add('max-w-7xl', 'px-4');
+  });
+  const style = await page
+    .locator('.site-header .site-container')
+    .evaluate((element) => {
+      const computed = getComputedStyle(element);
+      return { width: computed.maxWidth, padding: computed.paddingInlineStart };
+    });
+  expect(style).toEqual({ width: '1280px', padding: '16px' });
 });

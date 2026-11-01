@@ -34,7 +34,7 @@ Pinned Node **22.23.4**, pnpm **10.20.0**; frozen offline install succeeded.
 | Portfolio Content / ICU / publication validation | Passed                                                  |
 | Production build                                 | Passed                                                  |
 | Vitest / Testing Library                         | 78 passed                                               |
-| Playwright                                       | 55 passed across Chromium, Firefox and WebKit           |
+| Playwright                                       | 59 passed across Chromium, Firefox and WebKit           |
 | axe                                              | Desktop and expanded mobile navigation: zero violations |
 
 Browser checks cover five widths, longer Japanese/Simplified Chinese labels,
@@ -95,3 +95,16 @@ project UI and contact form still await their approved homepage/content/contact
 replacement tasks; this PR does not reinterpret those as current publication
 approvals. The accepted prototype remains a reference, imported by no production
 module. Further work proceeds with the Portfolio Motion System and journey issues.
+
+## CodeRabbit review follow-up
+
+Removed the duplicate target scroll margin, retaining only the root 6rem scroll
+padding. The new regression checks failed on the previous build: a mobile anchor
+landed at about 192px instead of clearing the header by 24px or less. They now pass
+at mobile and desktop sizes in Chromium, Firefox and WebKit. A live preview check
+measured the target at 95.83px with the header bottom at 89px.
+
+Shell styles now live in Tailwind's components layer. A browser regression checks
+that caller `max-w-7xl px-4` utilities override Container's default width and
+gutters; it failed before the change and passes after it. The no-JavaScript Hero
+heading assertion also uses an exact accessible-name match. No colors changed.
