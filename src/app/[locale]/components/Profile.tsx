@@ -49,7 +49,6 @@ export const Profile = () => {
 
           <div className="flex items-center gap-2">
             <MapPin
-              animateOnDefault="path-loop"
               animateOnHover="wiggle"
               animateOnTap="wiggle"
               className="h-6 w-6"

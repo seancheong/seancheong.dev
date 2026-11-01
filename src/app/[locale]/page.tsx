@@ -1,3 +1,4 @@
+import { Reveal } from '@/portfolio-motion';
 import { useTranslations } from 'next-intl';
 
 import { Contact } from './components/Contact';
@@ -18,10 +19,14 @@ export default function Home() {
         <Profile />
       </section>
       <section tabIndex={-1} id="experience">
-        <Experience />
+        <Reveal>
+          <Experience />
+        </Reveal>
       </section>
       <section tabIndex={-1} id="projects">
-        <Projects />
+        <Reveal>
+          <Projects />
+        </Reveal>
       </section>
       <section
         tabIndex={-1}

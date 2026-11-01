@@ -89,7 +89,9 @@ scrolling is enabled only when reduced motion is not requested. The root
 scroll margin to fragment targets.
 
 Do not add entrance opacity/typing wrappers to the shell or critical text. Motion
-policy belongs to the Portfolio Motion delivery, not the shell. Rebuild approved
+policy is owned by `@/portfolio-motion`; see [the motion guide](docs/motion.md).
+Use its 120ms/220ms tokens and opt-in Reveal for section boundaries. The layout
+mounts the passive spotlight and reduced-motion policy once. Rebuild approved
 prototypes within production module boundaries; do not import prototype files.
 Existing legacy sections, contact-form behavior and project curation are replaced
 by their delivery tasks. This foundation is not final homepage or release sign-off.

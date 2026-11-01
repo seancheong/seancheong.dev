@@ -33,7 +33,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
-    "framer-motion": "^11.11.10",
     "isomorphic-dompurify": "^2.16.0",
     "jsdom": "^26.1.0",
     "lodash": "^4.17.21",
