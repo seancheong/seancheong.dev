@@ -1,5 +1,6 @@
 import { Toaster } from '@/components/ui/sonner';
 import { getSiteMetadata, isPublishedLocale } from '@/portfolio-content';
+import { SiteShell } from '@/site-shell';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
@@ -66,12 +67,12 @@ export default async function RootLayout(
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <SiteShell locale={locale}>{children}</SiteShell>
           <Toaster richColors />
           <Analytics />
         </NextIntlClientProvider>

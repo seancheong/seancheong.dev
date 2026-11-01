@@ -1,19 +1,9 @@
-import { RotatingText } from '@/components/animate-ui/text/rotating';
-import { TypingText } from '@/components/animate-ui/text/typing';
 import { Button } from '@/components/ui/button';
 import { DownloadIcon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 import { SendEmailButton } from './SendEmailButton';
-
-const roles = [
-  'frontend-team-lead',
-  'frontend-engineer',
-  'fullstack-engineer',
-  'aws-solutions-architect',
-  'scrum-master',
-] as const;
 
 export const Hero = () => {
   const t = useTranslations('Common');
@@ -26,20 +16,9 @@ export const Hero = () => {
           {t('available-for-new-opportunities')}
         </div>
 
-        <h1 className="md:text-5xl">
-          <TypingText text={t('title')} />
-        </h1>
-
-        <h2>
-          <RotatingText
-            className="text-center md:text-2xl"
-            duration={4000}
-            text={roles.map((role) => t(`roles.${role}`))}
-            transition={{
-              duration: 0.4,
-              ease: 'easeInOut',
-            }}
-          />
+        <h1 className="md:text-5xl">{t('title')}</h1>
+        <h2 className="text-center md:text-2xl">
+          {t('roles.frontend-team-lead')}
         </h2>
       </div>
 

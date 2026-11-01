@@ -148,5 +148,21 @@
     "vue-task-management": {
       "title": "Building a Task Management Library with Vue 3 and Composition API"
     }
+  },
+  "Shell": {
+    "name": "Sean Cheong",
+    "location": "Kuala Lumpur, Malaysia",
+    "skip": "Skip to content",
+    "menu": "Menu",
+    "navigation-label": "Primary",
+    "navigation": {
+      "home": "Home",
+      "experience": "Experience",
+      "projects": "Projects",
+      "articles": "Articles",
+      "contact": "Contact"
+    },
+    "articles-description": "Read my writing on Medium.",
+    "articles-link": "Visit Medium"
   }
 }
