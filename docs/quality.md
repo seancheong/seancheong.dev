@@ -79,8 +79,8 @@ header renders without an entrance reveal, so its links do not depend on
 hydration or pass through low-contrast opacity states. Future Japanese/Chinese strings are
 injected only as test fixtures; they are not published locales. This is not a full
 responsive, motion, no-JavaScript visibility or screen-reader acceptance audit.
-Legacy reveal animations can still hide other content without JavaScript; replacing them
-remains part of the approved motion/homepage work.
+Portfolio Motion now keeps its reveal content fully visible without JavaScript;
+see [the motion guide](motion.md) for policy contracts and legacy boundaries.
 
 The current route's axe scan has no rule exclusions or baseline suppressions.
 Automated axe and Lighthouse accessibility scores cover different audit sets and

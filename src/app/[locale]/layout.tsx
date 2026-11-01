@@ -1,5 +1,7 @@
 import { Toaster } from '@/components/ui/sonner';
 import { getSiteMetadata, isPublishedLocale } from '@/portfolio-content';
+import { MotionPolicy, PointerSpotlight } from '@/portfolio-motion';
+import '@/portfolio-motion/styles.css';
 import { SiteShell } from '@/site-shell';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
@@ -72,7 +74,10 @@ export default async function RootLayout(
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          <SiteShell locale={locale}>{children}</SiteShell>
+          <MotionPolicy>
+            <SiteShell locale={locale}>{children}</SiteShell>
+            <PointerSpotlight />
+          </MotionPolicy>
           <Toaster richColors />
           <Analytics />
         </NextIntlClientProvider>
