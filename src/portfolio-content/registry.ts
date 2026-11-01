@@ -18,6 +18,24 @@ export const configuration = {
           state: 'shipped',
           reference: 'https://takonbini.com',
         },
+        {
+          id: 'bounded-catalog',
+          state: 'shipped',
+          reference:
+            'https://github.com/seancheong/takonbini-web/blob/6d9e63e78fd8cd77449214773dbbd65fcb3f8889/src/features/products/catalog/catalog-window.ts',
+        },
+        {
+          id: 'bounded-catalog-observation',
+          state: 'measured',
+          reference:
+            'https://github.com/seancheong/takonbini-web/blob/6d9e63e78fd8cd77449214773dbbd65fcb3f8889/docs/evidence/catalog-memory-2026-10-25.md',
+        },
+        {
+          id: 'controlled-css-comparison',
+          state: 'measured',
+          reference:
+            'https://github.com/seancheong/takonbini-web/blob/6d9e63e78fd8cd77449214773dbbd65fcb3f8889/docs/evidence/homepage-rendering-2026-10-26.md',
+        },
       ],
       liveUrl: 'https://takonbini.com',
       sourceUrl: 'https://github.com/seancheong/takonbini-web',

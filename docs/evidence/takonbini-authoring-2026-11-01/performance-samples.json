@@ -1,0 +1,90 @@
+{
+  "url": "https://takonbini.com/?lang=en",
+  "method": "Lighthouse pinned default simulated mobile and desktop profiles; sequential live samples; no matched baseline or forced cold state",
+  "samples": [
+    {
+      "profile": "mobile",
+      "run": 1,
+      "capturedAt": "2026-11-01T12:40:14.192Z",
+      "performance": 92,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "lcpMs": 2571.389,
+      "cls": 0,
+      "tbtMs": 63,
+      "scriptBytes": 248449,
+      "lighthouse": "13.5.0"
+    },
+    {
+      "profile": "mobile",
+      "run": 2,
+      "capturedAt": "2026-11-01T12:40:24.280Z",
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "lcpMs": 1399.7273,
+      "cls": 0,
+      "tbtMs": 11.5,
+      "scriptBytes": 248473,
+      "lighthouse": "13.5.0"
+    },
+    {
+      "profile": "mobile",
+      "run": 3,
+      "capturedAt": "2026-11-01T12:40:32.124Z",
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "lcpMs": 1386.6417000000001,
+      "cls": 0,
+      "tbtMs": 13,
+      "scriptBytes": 248525,
+      "lighthouse": "13.5.0"
+    },
+    {
+      "profile": "desktop",
+      "run": 1,
+      "capturedAt": "2026-11-01T12:40:39.913Z",
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "lcpMs": 693.2062,
+      "cls": 0,
+      "tbtMs": 0,
+      "scriptBytes": 248476,
+      "lighthouse": "13.5.0"
+    },
+    {
+      "profile": "desktop",
+      "run": 2,
+      "capturedAt": "2026-11-01T12:40:48.014Z",
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "lcpMs": 567.9243,
+      "cls": 0,
+      "tbtMs": 0,
+      "scriptBytes": 248522,
+      "lighthouse": "13.5.0"
+    },
+    {
+      "profile": "desktop",
+      "run": 3,
+      "capturedAt": "2026-11-01T12:40:55.739Z",
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "lcpMs": 578.8465,
+      "cls": 0,
+      "tbtMs": 0,
+      "scriptBytes": 248484,
+      "lighthouse": "13.5.0"
+    }
+  ]
+}

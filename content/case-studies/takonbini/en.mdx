@@ -1,22 +1,149 @@
-# Takonbini — authoring draft
+# Takonbini
 
-> This document is not approved for publication. Its loader is registered for
-> authoring validation only; public queries and route availability exclude it.
+> Publication draft. Sean's final prose and media approval is pending. This
+> document remains excluded from public queries and route availability.
 
 ## Summary
 
-The complete case-study summary, evidence classifications, and publication-safe
-media require the separate case-study authoring review.
+When I lived in Japan, I wanted to know what was new that week at the Lawson near
+my home. I had enjoyed konbini food since moving there: it tasted good, was
+inexpensive, and gave me something different to try. I built Takonbini to answer
+that question for myself.
 
-## Decision narrative
+Takonbini brings products from Lawson, 7-Eleven and FamilyMart into one catalog,
+with English, Japanese and Traditional Chinese interfaces. Visitors can search,
+filter by store, category, region or price, and open a product without losing
+their browsing context. I hope it can also help konbini fans outside Japan discover
+what they would like to try.
 
-Record the constraint, alternatives, accepted tradeoff, decision, and limitation
-from verified project evidence.
+This is my personal project. The engineering story centers on preserving that
+browsing context as the catalog grows. The implementation keeps a bounded window
+of product data, renders the rows near the viewport, and restores a product anchor
+when a visitor returns. The first results are rendered on the server; a separate
+Browse route provides ordinary links through the catalog.
+
+The evidence includes a controlled long-browsing fixture and a paired CSS-delivery
+experiment. Their measurements have explicit limits. Fresh production checks
+confirm a populated catalog and product-dialog focus return, while an automated
+catalog accessibility finding remains open. Retailer listings do not guarantee
+stock at a particular shop. Reliability and final release acceptance also remain
+unfinished.
+
+## Keeping a place without keeping every product
+
+The original catalog appended fetched pages and kept their cards mounted. That
+made returning to an earlier product straightforward, but retained more data and
+DOM as browsing continued. Rendering fewer cards alone would leave the query
+cache free to grow.
+
+The chosen design separates a compact directory of visited pages from their
+resident product payloads. It retains at most five pages of 20 catalog products
+and uses measured rows to virtualize the visible cards. An evicted page can be
+fetched using its recorded cursor rather than replaying every earlier request.
+The originating product remains the reference for restoring position and focus.
+
+Simply capping the existing forward-only infinite query would discard the earlier
+payloads without providing a reliable way back. The dedicated window coordinator
+adds that recovery path. The tradeoff is more restoration logic and occasional
+requests when a visitor revisits evicted data. Changed or missing products need a
+bounded fallback; this is not a frozen historical view of the catalog.
+
+Product details open in a native dialog from the catalog and also have direct
+URLs. Dismissal returns focus to the originating card. A history-navigation bug
+showed why timing matters: the browser ignored a focus attempt while the catalog
+was still inert. Restoration now belongs to the catalog owner, which waits until
+the results can receive focus.
+
+## Making the first response useful
+
+The homepage renders its first product results on the server. A separate blocking
+stylesheet request still delayed the first paint in the controlled rendering
+experiment. The chosen implementation uses the framework's inline-CSS option to
+include the complete generated stylesheet in the first response.
+
+This adds bytes to the HTML. It also uses an experimental framework option, so
+compiled-output checks verify that the full stylesheet is present and that no
+blocking stylesheet link has returned. The implementation avoids maintaining a
+second hand-written critical-CSS subset.
+
+The same investigation reproduced a server-rendering defect: an immediately
+collectable query could lose its prefetched products before the lazy route read
+them. The fix retains that seed for the request-scoped server query client.
+Browser cache eviction remains separate, preserving the bounded browsing policy.
 
 ## Verified outcomes
 
-Only approved, reproducible evidence belongs in the published version.
+### Bounded browsing in a controlled fixture
+
+A recorded 25 October 2026 fixture traversed more than 50 pages and encountered up
+to 1,100 synthetic products. Across 96 samples, at most 100 catalog products were
+resident and 21 product links were mounted. A deep refresh restored the selected
+product within 0.125 CSS pixels using two client page reads plus the server seed.
+
+Those are fixture observations, not a fixed total-browser-memory guarantee. Image
+caches, browser internals and different devices are outside that bound. The
+[measurement report](https://github.com/seancheong/takonbini-web/blob/6d9e63e78fd8cd77449214773dbbd65fcb3f8889/docs/evidence/catalog-memory-2026-10-25.md)
+records the method, real-content checks and remaining acceptance work.
+
+### A controlled CSS-delivery comparison
+
+Two baseline runs measured LCP at 1.505 and 1.506 seconds. Two candidate runs
+measured 0.705 and 0.706 seconds, with CLS 0 throughout. Compressed HTML increased
+by 9,958 bytes. The experiment used the same frozen public products and assets,
+a local mirror, an emulated mobile viewport, CPU slowdown and Slow 4G.
+
+This isolates browser delivery. It excludes API and platform latency and does not
+establish a production speedup, field INP result or worldwide performance
+improvement. The [rendering report](https://github.com/seancheong/takonbini-web/blob/6d9e63e78fd8cd77449214773dbbd65fcb3f8889/docs/evidence/homepage-rendering-2026-10-26.md)
+records the individual samples and the HTML-size tradeoff.
+
+### Current production checks
+
+On 1 November 2026, fresh checks found real catalog products in the English,
+Japanese and Traditional Chinese interfaces. An English product dialog loaded its
+actual description, price, release date and region. Escape dismissed it and
+returned keyboard focus to its product link. The 390px catalog check had no
+horizontal overflow. These are scoped observations, not a full device matrix.
+
+Fresh axe scans found no violations in the loaded product dialog or mobile filter
+panel. The English catalog scan reported a visible-label/accessibility-name
+mismatch on 12 mounted links. That finding remains open. Lighthouse's initial-page
+Accessibility score of 100 does not override it.
+
+### Fresh production lab samples
+
+Three sequential mobile Lighthouse runs on 1 November measured LCP at 2.571,
+1.400 and 1.387 seconds, with Performance scores of 92, 100 and 100. Desktop LCP
+was 0.693, 0.568 and 0.579 seconds. CLS was 0 in all six samples. One mobile
+sample exceeded 2.5 seconds, despite the lower median.
+
+These used Lighthouse 13.5.0's simulated mobile and desktop profiles against the
+live site. There was no matched baseline, forced cold state or field data. They
+cannot establish a before-and-after improvement or replace the product's adopted
+release-acceptance method.
 
 ## Reflection
 
-Keep retrospective learning distinct from measured outcomes and planned work.
+The useful unit of restoration is the product a visitor was reading, together
+with its position in the viewport. A pixel offset alone cannot account for an
+evicted page, a different column count or translated text wrapping differently.
+That is the design lesson I would carry into another long-browsing interface.
+
+The rendering investigation also changed the diagnosis. The measured LCP element
+was a heading, so reducing product-image bytes would not have addressed the
+observed blocking stylesheet request. The comparison tested that mechanism under
+controlled conditions before treating it as a production claim.
+
+## Remaining work
+
+The catalog-link accessible-name finding needs resolution and a fresh check.
+Broader device and assistive-technology coverage, field interaction performance,
+operational recovery and alerting evidence, actual cost observation and the final
+stability window remain open in the product tracker. This case study does not
+claim those gates have passed.
+
+The product reads retailer listings. Prices and availability may vary by location,
+and translated descriptions have not received a comprehensive editorial review.
+There are no defensible adoption, conversion or business-impact measurements in
+this case study. Reaching konbini fans around the world is an ambition, not a
+measured outcome.

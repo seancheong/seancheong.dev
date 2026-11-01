@@ -1,0 +1,31 @@
+{
+  "capturedAt": "2026-11-01T12:39:45.826Z",
+  "webSourceRevision": "6d9e63e78fd8cd77449214773dbbd65fcb3f8889",
+  "catalogUrl": "https://takonbini.com/?lang=en",
+  "mountedProductLinks": 12,
+  "englishHeading": "Japan’s convenience stores",
+  "japaneseHeading": "日本のコンビニ商品",
+  "chineseHeading": "日本便利商店商品",
+  "loadedDetail": {
+    "url": "https://takonbini.com/products/6ea992752c5e0704d705b3842909eba3?limit=20&lang=en",
+    "title": "Beniharuka Sweet Potato Cream Puff",
+    "descriptionPriceDateRegionVisible": true,
+    "escapeDismissal": true,
+    "originatingLinkFocusRestored": true
+  },
+  "mobile": {
+    "width": 390,
+    "overflow": false
+  },
+  "settledFilteredCapture": {
+    "capturedAt": "2026-11-01T14:51:18.672Z",
+    "url": "https://takonbini.com/?stores=%5B%22SevenEleven%22%5D&lang=en",
+    "loadedStores": ["SevenEleven"],
+    "loadingPlaceholder": false,
+    "mobileWidth": 390,
+    "overflow": false,
+    "chineseHeading": "日本便利商店商品"
+  },
+  "browserErrors": [],
+  "scope": "Scoped Chromium observations, not full device, assistive-technology, source-data freshness or translation-quality acceptance."
+}
