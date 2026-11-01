@@ -48,6 +48,11 @@ and a stale expectation that focus remain on Menu after fragment navigation.
 The final implementation gives the disclosure a button role and focusable fragment
 destinations. The rebuilt complete suite passed without assertion retries.
 
+The CI fault probe now targets the hydrated-home test where the fault is injected.
+Adding the mobile audit exposed the old single-report assumption: the probe could
+read the passing mobile report instead. Both real audits remain required; the
+negative probe still requires the injected image-alt failure, screenshot and trace.
+
 ### Color checks
 
 Calculated from the shipped HSL tokens using WCAG sRGB relative luminance:

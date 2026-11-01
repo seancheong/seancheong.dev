@@ -13,7 +13,7 @@ const probes = {
     '--grep',
     'home navigation reaches',
   ],
-  axe: ['test:axe'],
+  axe: ['test:axe', '--grep', 'hydrated home accessibility'],
   lighthouse: ['exec', 'node', 'scripts/quality/check-report.mjs'],
 };
 const selected = process.argv.slice(2);
