@@ -1,0 +1,31 @@
+{
+  "capturedAt": "2026-11-01T12:39:31.774Z",
+  "engine": "156.0.8078.4",
+  "axe": [
+    {
+      "state": "catalog",
+      "violations": [
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "nodes": 12,
+          "description": "Ensure that elements labelled through their content must have their visible text as part of their accessible name"
+        }
+      ],
+      "incomplete": 2,
+      "passes": 26
+    },
+    {
+      "state": "detail",
+      "violations": [],
+      "incomplete": 1,
+      "passes": 18
+    },
+    {
+      "state": "mobile-filters",
+      "violations": [],
+      "incomplete": 1,
+      "passes": 16
+    }
+  ]
+}

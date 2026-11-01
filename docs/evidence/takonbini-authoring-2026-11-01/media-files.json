@@ -1,0 +1,62 @@
+[
+  {
+    "file": "catalog-seven-eleven-desktop.webp",
+    "width": 1440,
+    "height": 1000,
+    "bytes": 68314,
+    "sha256": "3bd557e0102199a90236c38c9a4992c088a374cca5fa0bcdeea85547c08a9fe6",
+    "sourceSha256": "06caf23e813cb5f36e61684250db4abf45af4ee3ac8ba3aba4f12e2ab4e7f02b",
+    "publication": "draft",
+    "rightsReview": "pending"
+  },
+  {
+    "file": "detail-desktop.webp",
+    "width": 1440,
+    "height": 1000,
+    "bytes": 48200,
+    "sha256": "7c56f66e81cc7ead25db3904c2b3c0384aaf973e5cb47b30c2bb0dfc748942fe",
+    "sourceSha256": "28ea764b19f9c989f2b7fe8f494b5fa310f43e0f59b914383eeffd9855e9c5b6",
+    "publication": "draft",
+    "rightsReview": "pending"
+  },
+  {
+    "file": "catalog-mobile.webp",
+    "width": 390,
+    "height": 844,
+    "bytes": 19732,
+    "sha256": "5e32cfbaab568bbac8caad3a2c546bd5efb2e99bd279d12ab62c2e4815593ad0",
+    "sourceSha256": "91c5f2c831003eab1bc6af98a14f3ef03001240f8b3af5253f0a1ecf67d22ba2",
+    "publication": "draft",
+    "rightsReview": "pending"
+  },
+  {
+    "file": "catalog-food-mobile.webp",
+    "width": 390,
+    "height": 844,
+    "bytes": 12404,
+    "sha256": "bc8a19eb05eb22b5622f79691596d0631649a2ba21f285916d7dcf1e613dbe25",
+    "sourceSha256": "10cead4153779fe10c74e380718b4bc3abcd8822b236b5278ddcc4db513836c3",
+    "publication": "draft",
+    "rightsReview": "pending"
+  },
+  {
+    "file": "filters-mobile.webp",
+    "width": 390,
+    "height": 844,
+    "bytes": 20884,
+    "sha256": "8ca0fd98c2e0dee0554f178f139237609070969f602273910cbf644762257c97",
+    "sourceSha256": "5c39eceacbd5ca3f4a6d8e5db466fd281123d813eaecdea74cdb6727c89d10fa",
+    "publication": "draft",
+    "rightsReview": "pending"
+  },
+  {
+    "file": "catalog-ja-768.webp",
+    "width": 768,
+    "height": 1000,
+    "bytes": 51236,
+    "sha256": "baf60570ecdd53035a62ffa9bd07e6d9b4ee9e3d295da545d3ad7fa5d3ff0e5c",
+    "sourceSha256": "00a5c9e64f084c19f91dd8b8fa092631044b92d7c76fc710463af3c2491f571b",
+    "publication": "draft",
+    "rightsReview": "pending"
+  }
+]
