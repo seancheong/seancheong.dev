@@ -335,7 +335,15 @@ export function createPortfolioContent(configuration: ContentConfiguration) {
       .filter((project) => project.publication === 'approved')
       .toSorted((a, b) => a.order - b.order)
       .map((project) => {
-        const destination = project.liveUrl ?? project.sourceUrl;
+        const hasCaseStudy = configuration.documents.some(
+          (document) =>
+            document.slug === project.slug &&
+            document.locale === locale &&
+            document.publication === 'approved',
+        );
+        const destination = hasCaseStudy
+          ? `/${locale}/work/${project.slug}`
+          : (project.liveUrl ?? project.sourceUrl);
         if (!destination || !project.cover)
           throw new Error(
             `Missing validated project presentation: ${project.slug}`,

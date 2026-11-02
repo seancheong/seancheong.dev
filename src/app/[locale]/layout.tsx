@@ -1,25 +1,26 @@
 import { Toaster } from '@/components/ui/sonner';
 import { getSiteMetadata, isPublishedLocale } from '@/portfolio-content';
-import { MotionPolicy, PointerSpotlight } from '@/portfolio-motion';
+import { MotionPolicy, PointerSpotlight } from '@/portfolio-motion/shell';
 import '@/portfolio-motion/styles.css';
 import { SiteShell } from '@/site-shell';
+import { IntlProvider } from '@/site-shell/intl-provider';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTimeZone, setRequestLocale } from 'next-intl/server';
 import localFont from 'next/font/local';
 import { notFound } from 'next/navigation';
 
 import './globals.css';
 
 const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
+  src: './fonts/GeistVF.woff2',
   variable: '--font-geist-sans',
   weight: '100 900',
 });
 const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
+  src: './fonts/GeistMonoVF.woff2',
   variable: '--font-geist-mono',
+  preload: false,
   weight: '100 900',
 });
 
@@ -64,23 +65,28 @@ export default async function RootLayout(
   const { locale } = await props.params;
   if (!isPublishedLocale(locale)) notFound();
 
+  setRequestLocale(locale);
   const { children } = props;
 
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale} className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>
+        <IntlProvider
+          locale={locale}
+          messages={messages}
+          timeZone={await getTimeZone()}
+        >
           <MotionPolicy>
             <SiteShell locale={locale}>{children}</SiteShell>
             <PointerSpotlight />
           </MotionPolicy>
           <Toaster richColors />
-          <Analytics />
-        </NextIntlClientProvider>
+          {process.env.VERCEL === '1' && <Analytics />}
+        </IntlProvider>
       </body>
     </html>
   );

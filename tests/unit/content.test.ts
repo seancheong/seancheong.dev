@@ -23,12 +23,13 @@ test('published project facts move behind one interface without new claims', () 
   expect(result.status).toBe('found');
   if (result.status !== 'found') throw new Error('Expected public projects');
   expect(result.value.map((project) => project.slug)).toEqual([
+    'takonbini',
     'tripa',
     'script-blender',
     'chroma-ui',
     'vue-task-management',
   ]);
-  expect(result.value[0]).toMatchObject({
+  expect(result.value[1]).toMatchObject({
     title: en.Project.tripa.title,
     description: en.Project.tripa.description,
     destination: 'https://tripa-six.vercel.app/',
@@ -36,21 +37,26 @@ test('published project facts move behind one interface without new claims', () 
   });
   expect(getFeaturedProjects('en')).toMatchObject({
     status: 'found',
-    value: [{ slug: 'tripa' }, { slug: 'script-blender' }],
+    value: [{ slug: 'takonbini' }, { slug: 'script-blender' }],
   });
 });
 
 test('withheld projects and drafts are not advertised or sent as client messages', () => {
   expect(getProject('en', 'cashush')).toEqual({ status: 'not-found' });
-  expect(getProject('en', 'takonbini')).toEqual({ status: 'not-found' });
+  expect(getProject('en', 'takonbini')).toMatchObject({
+    status: 'found',
+    value: { destination: '/en/work/takonbini' },
+  });
   expect(getCuratedNotes('en')).toEqual({ status: 'found', value: [] });
-  expect(getCaseStudyLocales('takonbini')).toEqual([]);
-  expect(getPublishedWorkParams()).toEqual([]);
+  expect(getCaseStudyLocales('takonbini')).toEqual(['en']);
+  expect(getPublishedWorkParams()).toEqual([
+    { locale: 'en', slug: 'takonbini' },
+  ]);
   const messages = getLocaleMessages('en');
   expect(messages.status).toBe('found');
   if (messages.status !== 'found') throw new Error('Expected public messages');
   expect(messages.value).not.toHaveProperty('Project.cashush');
-  expect(messages.value).not.toHaveProperty('Project.takonbini');
+  expect(messages.value).toHaveProperty('Project.takonbini');
   expect(messages.value).not.toHaveProperty('Article.auto-save-hooks');
 });
 
@@ -327,4 +333,25 @@ test('reviewed article copy cannot turn planned-only evidence into shipped work'
       message: 'Planned work alone cannot substantiate a published article',
     }),
   );
+});
+
+test('draft project and document fixtures never become a public route or client message', () => {
+  const fixture = contentFixture();
+  const content = createPortfolioContent({
+    ...fixture,
+    projects: fixture.projects.map((project) => ({
+      ...project,
+      publication: 'draft',
+    })),
+    documents: fixture.documents.map((document) => ({
+      ...document,
+      publication: 'draft',
+    })),
+  });
+  expect(content.getProject('en', 'tripa')).toEqual({ status: 'not-found' });
+  expect(content.getPublishedWorkParams()).toEqual([]);
+  const messages = content.getLocaleMessages('en');
+  expect(messages.status).toBe('found');
+  if (messages.status === 'found')
+    expect(messages.value).not.toHaveProperty('Project.tripa');
 });

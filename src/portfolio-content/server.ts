@@ -1,14 +1,18 @@
 import { compile } from '@mdx-js/mdx';
+import type { Root } from 'mdast';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import 'server-only';
 
+import { takonbiniMedia } from './case-study-media';
 import {
   type ContentConfiguration,
   type ContentIssue,
   createPortfolioContent,
 } from './model';
 import { configuration } from './registry';
+
+export type { CaseStudyMedia } from './case-study-media';
 
 type Sources = Readonly<Record<string, () => Promise<string>>>;
 const sources = {
@@ -30,11 +34,48 @@ export function createCaseStudyContent(
     if (!load) throw new Error(`Missing explicit case-study loader: ${id}`);
     const source = await load();
     if (!source.trim()) throw new Error(`Empty MDX document: ${id}`);
+    const headings: { title: string; start: number; end: number }[] = [];
+    function collectSections() {
+      return (tree: Root) => {
+        for (const node of tree.children) {
+          if (node.type !== 'heading' || node.depth !== 2) continue;
+          const start = node.position?.start.offset;
+          const end = node.position?.end.offset;
+          if (start === undefined || end === undefined) continue;
+          const title = node.children
+            .map((child) => ('value' in child ? child.value : ''))
+            .join('');
+          headings.push({ title, start, end });
+        }
+      };
+    }
     const compiled = await compile(
       { path: id, value: source },
-      { outputFormat: 'function-body' },
+      { outputFormat: 'function-body', remarkPlugins: [collectSections] },
     );
-    return { format: 'mdx' as const, source, compiledSource: String(compiled) };
+    const sections = await Promise.all(
+      headings.map(async (heading, index) => ({
+        id: heading.title
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/-$/, ''),
+        title: heading.title,
+        compiledSource: String(
+          await compile(source.slice(heading.end, headings[index + 1]?.start), {
+            outputFormat: 'function-body',
+          }),
+        ),
+      })),
+    );
+    const media: Partial<typeof takonbiniMedia> =
+      id === 'takonbini/en' ? takonbiniMedia : {};
+    return {
+      media,
+      format: 'mdx' as const,
+      source,
+      compiledSource: String(compiled),
+      sections,
+    };
   }
 
   return {

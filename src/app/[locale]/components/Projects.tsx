@@ -4,14 +4,14 @@ import {
 } from '@/components/animate-ui/effects/motion-highlight';
 import { Paintbrush } from '@/components/animate-ui/icons/paintbrush';
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
-import { getProjects } from '@/portfolio-content';
+import { getFeaturedProjects } from '@/portfolio-content';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
 
 export const Projects = () => {
   const t = useTranslations('Project');
-  const result = getProjects(useLocale());
+  const result = getFeaturedProjects(useLocale());
   if (result.status !== 'found')
     throw new Error('Project content is unavailable or invalid');
   const projects = result.value;
@@ -80,7 +80,8 @@ const imageClasses: Record<string, string> = {
 };
 const gridClasses: Record<string, string> = {
   tripa: 'md:col-span-5',
-  'script-blender': 'md:col-span-3',
+  'script-blender': 'md:col-span-2',
+  takonbini: 'md:col-span-3',
   'chroma-ui': 'md:col-span-2',
   'vue-task-management': 'md:col-span-3',
 };
