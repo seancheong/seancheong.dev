@@ -25,3 +25,15 @@ test('mobile shell accessibility', async ({ page }, info) => {
   const result = await audit(page, info);
   expect(result.violations).toEqual([]);
 });
+
+test('case study accessibility with all optional depth open', async ({
+  page,
+}, info) => {
+  await page.goto('/en/work/takonbini');
+  await page.locator('details.case-disclosure').evaluateAll((elements) =>
+    elements.forEach((el) => {
+      if (el instanceof HTMLDetailsElement) el.open = true;
+    }),
+  );
+  expect((await audit(page, info)).violations).toEqual([]);
+});

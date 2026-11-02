@@ -11,9 +11,7 @@ test('English navigation stays in its published locale @smoke', async ({
     'content',
     'Senior Software Engineer/Team Lead',
   );
-  expect(await page.content()).not.toContain(
-    'A catalog of Japanese convenience-store products.',
-  );
+  await expect(page.locator('a[href="/en/work/takonbini"]')).toHaveCount(1);
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(
     page
@@ -27,7 +25,7 @@ test('English navigation stays in its published locale @smoke', async ({
   ).toHaveAttribute('href', '/en#projects');
   await expect(
     page.locator('a[href="https://tripa-six.vercel.app/"]'),
-  ).toHaveCount(1);
+  ).toHaveCount(0);
   await expect(page.locator('a[href="https://cashush.com"]')).toHaveCount(0);
   await expect(
     page.locator('link[hreflang="ja"], link[hreflang="zh-Hans"]'),
@@ -41,7 +39,7 @@ for (const route of [
   '/fr',
   '/ja/work/tripa',
   '/en/work/missing',
-  '/en/work/takonbini',
+  '/en/work/tripa',
   '/en/articles/missing',
 ]) {
   test(`${route} returns an actual 404 without a locale redirect @smoke`, async ({

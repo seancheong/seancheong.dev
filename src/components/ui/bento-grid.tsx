@@ -41,7 +41,7 @@ export const BentoGridItem = ({
   return (
     <Link
       href={url}
-      target="_blank"
+      target={url.startsWith('/') ? undefined : '_blank'}
       className={cn(
         'group row-span-1 flex flex-col justify-between space-y-4 rounded-lg border bg-transparent p-4',
         className,

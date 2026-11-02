@@ -10,7 +10,7 @@ export const configuration = {
       slug: 'takonbini',
       order: 0,
       placement: 'featured',
-      publication: 'draft',
+      publication: 'approved',
       permission: 'confirmed',
       evidence: [
         {
@@ -37,13 +37,14 @@ export const configuration = {
             'https://github.com/seancheong/takonbini-web/blob/6d9e63e78fd8cd77449214773dbbd65fcb3f8889/docs/evidence/homepage-rendering-2026-10-26.md',
         },
       ],
+      cover: '/images/work/takonbini/catalog-seven-eleven-desktop.webp',
       liveUrl: 'https://takonbini.com',
       sourceUrl: 'https://github.com/seancheong/takonbini-web',
     },
     {
       slug: 'tripa',
       order: 1,
-      placement: 'featured',
+      placement: 'legacy',
       publication: 'approved',
       permission: 'confirmed',
       evidence: [
@@ -172,7 +173,7 @@ export const configuration = {
       id: 'takonbini/en',
       slug: 'takonbini',
       locale: 'en',
-      publication: 'draft',
+      publication: 'approved',
     },
   ],
   requiredCaseStudies: ['takonbini'],

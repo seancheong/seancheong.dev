@@ -1,0 +1,268 @@
+{
+  "budgets": {
+    "runs": 3,
+    "mobile": {
+      "performance": 90,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "desktop": {
+      "performance": 95,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "lcpMs": 2500,
+    "cls": 0.1,
+    "tbtMs": 200,
+    "firstLoadJsBytes": 180000,
+    "homeTargetJsBytes": 160000,
+    "reviewIncreaseJsBytes": 10000,
+    "lcpMediaBytes": 250000
+  },
+  "summary": [
+    {
+      "route": {
+        "path": "/en",
+        "name": "home"
+      },
+      "profile": "mobile",
+      "samples": [
+        {
+          "performance": 89,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 91,
+          "agentic-browsing": 100,
+          "lcpMs": 3702.125,
+          "cls": 0,
+          "tbtMs": 107,
+          "firstLoadJsBytes": 235725,
+          "lcpMediaBytes": 32037
+        },
+        {
+          "performance": 96,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 91,
+          "agentic-browsing": 100,
+          "lcpMs": 2858.2819999999997,
+          "cls": 0,
+          "tbtMs": 20,
+          "firstLoadJsBytes": 235725,
+          "lcpMediaBytes": 32035
+        },
+        {
+          "performance": 97,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 91,
+          "agentic-browsing": 100,
+          "lcpMs": 2557.4963,
+          "cls": 0,
+          "tbtMs": 21.5,
+          "firstLoadJsBytes": 235725,
+          "lcpMediaBytes": 32035
+        }
+      ],
+      "homeTargetMet": false,
+      "javascriptGrowthReview": "No matched baseline supplied; compare a reviewed report before release.",
+      "metrics": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 91,
+        "lcpMs": 2858.2819999999997,
+        "cls": 0,
+        "tbtMs": 21.5,
+        "firstLoadJsBytes": 235725,
+        "lcpMediaBytes": 32035
+      },
+      "failures": [
+        "seo: 91 < 100",
+        "lcpMs: 2858.2819999999997 > 2500",
+        "firstLoadJsBytes: 235725 > 180000"
+      ]
+    },
+    {
+      "route": {
+        "path": "/en",
+        "name": "home"
+      },
+      "profile": "desktop",
+      "samples": [
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 96,
+          "seo": 91,
+          "agentic-browsing": 100,
+          "lcpMs": 566.9780000000001,
+          "cls": 0,
+          "tbtMs": 0,
+          "firstLoadJsBytes": 235725,
+          "lcpMediaBytes": 32035
+        },
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 96,
+          "seo": 91,
+          "agentic-browsing": 100,
+          "lcpMs": 588.9171,
+          "cls": 0,
+          "tbtMs": 0,
+          "firstLoadJsBytes": 235725,
+          "lcpMediaBytes": 32035
+        },
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 96,
+          "seo": 91,
+          "agentic-browsing": 100,
+          "lcpMs": 591.3195000000001,
+          "cls": 0,
+          "tbtMs": 0,
+          "firstLoadJsBytes": 235725,
+          "lcpMediaBytes": 32035
+        }
+      ],
+      "homeTargetMet": false,
+      "javascriptGrowthReview": "No matched baseline supplied; compare a reviewed report before release.",
+      "metrics": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 96,
+        "seo": 91,
+        "lcpMs": 588.9171,
+        "cls": 0,
+        "tbtMs": 0,
+        "firstLoadJsBytes": 235725,
+        "lcpMediaBytes": 32035
+      },
+      "failures": [
+        "best-practices: 96 < 100",
+        "seo: 91 < 100",
+        "firstLoadJsBytes: 235725 > 180000"
+      ]
+    },
+    {
+      "route": {
+        "path": "/en/work/takonbini",
+        "name": "takonbini"
+      },
+      "profile": "mobile",
+      "samples": [
+        {
+          "performance": 96,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 66,
+          "agentic-browsing": 100,
+          "lcpMs": 2780.8841,
+          "cls": 0,
+          "tbtMs": 18.5,
+          "firstLoadJsBytes": 136553,
+          "lcpMediaBytes": 0
+        },
+        {
+          "performance": 98,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 66,
+          "agentic-browsing": 100,
+          "lcpMs": 2482.2676,
+          "cls": 0,
+          "tbtMs": 18,
+          "firstLoadJsBytes": 136553,
+          "lcpMediaBytes": 0
+        },
+        {
+          "performance": 96,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 66,
+          "agentic-browsing": 100,
+          "lcpMs": 2783.5078000000003,
+          "cls": 0,
+          "tbtMs": 19,
+          "firstLoadJsBytes": 136553,
+          "lcpMediaBytes": 0
+        }
+      ],
+      "javascriptGrowthReview": "No matched baseline supplied; compare a reviewed report before release.",
+      "metrics": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66,
+        "lcpMs": 2780.8841,
+        "cls": 0,
+        "tbtMs": 18.5,
+        "firstLoadJsBytes": 136553,
+        "lcpMediaBytes": 0
+      },
+      "failures": ["seo: 66 < 100", "lcpMs: 2780.8841 > 2500"]
+    },
+    {
+      "route": {
+        "path": "/en/work/takonbini",
+        "name": "takonbini"
+      },
+      "profile": "desktop",
+      "samples": [
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 66,
+          "agentic-browsing": 100,
+          "lcpMs": 547.8177000000001,
+          "cls": 0,
+          "tbtMs": 0,
+          "firstLoadJsBytes": 136553,
+          "lcpMediaBytes": 0
+        },
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 66,
+          "agentic-browsing": 100,
+          "lcpMs": 546.3641,
+          "cls": 0,
+          "tbtMs": 0,
+          "firstLoadJsBytes": 136553,
+          "lcpMediaBytes": 0
+        },
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 66,
+          "agentic-browsing": 100,
+          "lcpMs": 620.8870000000001,
+          "cls": 0,
+          "tbtMs": 0,
+          "firstLoadJsBytes": 136553,
+          "lcpMediaBytes": 0
+        }
+      ],
+      "javascriptGrowthReview": "No matched baseline supplied; compare a reviewed report before release.",
+      "metrics": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66,
+        "lcpMs": 547.8177000000001,
+        "cls": 0,
+        "tbtMs": 0,
+        "firstLoadJsBytes": 136553,
+        "lcpMediaBytes": 0
+      },
+      "failures": ["seo: 66 < 100"]
+    }
+  ]
+}

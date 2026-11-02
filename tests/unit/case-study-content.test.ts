@@ -11,15 +11,25 @@ import {
   optionalTranslationFixture,
 } from '../fixtures/content';
 
-test('registered authoring MDX compiles while the public document stays unavailable', async () => {
+test('approved Takonbini content compiles into brief and depth while other locales remain unavailable', async () => {
   expect(await validateContent()).toEqual([]);
-  expect(await getCaseStudy('en', 'takonbini')).toEqual({
-    status: 'not-found',
+  expect(await getCaseStudy('en', 'takonbini')).toMatchObject({
+    status: 'found',
+    value: {
+      sections: [
+        { id: 'summary' },
+        { id: 'keeping-a-place-without-keeping-every-product' },
+        { id: 'making-the-first-response-useful' },
+        { id: 'verified-outcomes' },
+        { id: 'reflection' },
+        { id: 'remaining-work' },
+      ],
+    },
   });
   expect(await getCaseStudy('ja', 'takonbini')).toEqual({
     status: 'not-found',
   });
-  expect(await validateContent('release')).toContainEqual(
+  expect(await validateContent('release')).not.toContainEqual(
     expect.objectContaining({ path: 'en.work.takonbini' }),
   );
 });
@@ -85,5 +95,17 @@ test('unregistered loaders cannot silently expand published routes', async () =>
   expect(await content.validateContent()).toContainEqual({
     path: 'tripa/ja',
     message: 'Loader has no registered document',
+  });
+});
+
+test('section extraction follows real Markdown headings, not headings inside code fences', async () => {
+  const content = createCaseStudyContent(contentFixture(), {
+    'tripa/en': async () =>
+      '# Fixture\n\n## Summary\n\nThe complete brief.\n\n```md\n## Not a section\n```\n\n## Evidence\n\nA measured observation.',
+  });
+  const result = await content.getCaseStudy('en', 'tripa');
+  expect(result).toMatchObject({
+    status: 'found',
+    value: { sections: [{ id: 'summary' }, { id: 'evidence' }] },
   });
 });

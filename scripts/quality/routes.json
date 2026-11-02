@@ -1,1 +1,4 @@
-[{ "path": "/en", "name": "home" }]
+[
+  { "path": "/en", "name": "home" },
+  { "path": "/en/work/takonbini", "name": "takonbini" }
+]

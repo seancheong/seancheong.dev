@@ -1,7 +1,8 @@
 # Portfolio Motion
 
-Import `Reveal`, `PointerSpotlight`, and `MotionPolicy` from
-`@/portfolio-motion`. The locale layout loads `@/portfolio-motion/styles.css`
+Import `Reveal` from `@/portfolio-motion`. The layout imports `PointerSpotlight`
+and `MotionPolicy` from `@/portfolio-motion/shell`. Separate entry points keep
+page-only reveal client references out of the shared shell bundle. The locale layout loads `@/portfolio-motion/styles.css`
 once, places `MotionPolicy` around the shell, and mounts one `PointerSpotlight`.
 Motion has no content, routing or journey dependencies.
 

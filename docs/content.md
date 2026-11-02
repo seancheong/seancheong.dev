@@ -51,21 +51,32 @@ file does not publish a locale. Promotion also requires complete ICU/key parity,
 required flagship documents, publication review, and the explicit locale-registry
 change. Fixtures are structural examples, not complete reviewed translations.
 
-The four existing permitted project cards retain their copy, links, image paths,
-image treatment and grid classes. Cashush facts remain in the registry with
-unverified permission and withheld publication, as required by [the selected-evidence decision](https://github.com/seancheong/seancheong.dev/issues/24).
-Its card and client messages are excluded. No new visual system is introduced.
+The implementation branch exposes only Takonbini and Script Blender through
+`getFeaturedProjects`. Other project records and assets remain retained; Cashush
+remains withheld with unverified permission. This is the approved two-project
+curation, not deletion of the archive or a new permission grant.
 
-Takonbini remains draft content until the separate prose/media review. Its local
-MDX file is an authoring outline, not a public stub. Selected article titles/URLs
-are registered, but curated-note queries return no unapproved summaries. The
-publication flags apply to portfolio content, not a blanket claim about a
-project's performance, accessibility or security.
+Sean explicitly approved the exact Takonbini prose and media M01–M04 in
+[#42](https://github.com/seancheong/seancheong.dev/issues/42#issuecomment-6559956315).
+The case-study implementation branch promotes those records and copies only the
+approved media into public assets so its preview can be reviewed. The route is
+`noindex`; the PR remains draft pending product-readiness, visual/manual review
+and the other delivery gates. Do not merge/promote it as if all those gates passed.
+Selected article queries still exclude unapproved summaries.
 
-`getCaseStudyLocales` and `getPublishedWorkParams` derive only approved documents
-intersected with published locales. Current work parameters are empty. Later
-route/metadata/sitemap consumers use this source once their production routes
-exist; content approval alone is not deployment or indexing evidence.
+`getCaseStudyLocales` and `getPublishedWorkParams` derive approved documents
+intersected with published locales. English Takonbini is the sole work parameter.
+The route validates availability through the Case Study journey and generates
+static HTML. Later metadata/sitemap work must use the same availability registry.
+Content approval, route implementation, merge, deployment, indexing and release
+acceptance remain distinct.
+
+Portfolio Content parses real top-level Markdown headings into compiled Summary
+and depth sections. Code-fence headings do not create sections. The journey owns
+the trusted-local-MDX renderer and native disclosures; content still returns data
+and compiled strings, never React components. Only explicitly registered local
+sources enter the compiler/renderer. Media alt text, captions and dimensions live
+in Portfolio Content; the journey controls their placement and loading behavior.
 
 ## Validation and authoring
 
@@ -105,6 +116,6 @@ English is not inferred from a cookie at `/ja`, `/zh-Hans` or another invalid UR
 Automatic middleware alternate links are disabled; the later discoverability
 work emits alternates from real content availability.
 
-Case-study routes, final Takonbini prose, the homepage redesign, Articles UI,
+The homepage redesign, Articles UI,
 full localized 404 design, and canonical/sitemap/social output remain their
 separate delivery issues. Existing performance and manual release gates remain.
