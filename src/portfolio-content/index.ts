@@ -27,3 +27,5 @@ export const {
   getCaseStudyLocales,
   getPublishedWorkParams,
 } = portfolioContent;
+export { getHomeContent, careerPlaces } from './home';
+export type { CareerEntry } from './home';

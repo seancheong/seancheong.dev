@@ -38,8 +38,8 @@
   },
   "Profile": {
     "title": "Professional Profile",
-    "detail": "With over <b>{year} years</b> of hands-on experience in software development, I currently serve as a <b>Senior Frontend Software Engineer</b> at <b>Woven by Toyota, Japan</b>. Well-versed in frontend technologies, with an extensive background in the full software development lifecycle, including requirements gathering, design, coding, testing, and maintenance.",
-    "location": "Based in Tokyo, Japan"
+    "detail": "I am a Senior Consultant at Guidewire in Kuala Lumpur, Malaysia, with 15 years of experience building applications at global companies.",
+    "location": "Based in Kuala Lumpur, Malaysia"
   },
   "Experience": {
     "title": "Work Experience",
@@ -85,7 +85,7 @@
     "takonbini": {
       "title": "Takonbini",
       "description": "A catalog of Japanese convenience-store products.",
-      "coverAlt": "Takonbini's English catalog with the 7-Eleven filter selected and three food product cards.",
+      "coverAlt": "Takonbini's dark-theme English catalog with the 7-Eleven filter selected and three food product cards.",
       "seoTitle": "Takonbini",
       "seoDescription": "A catalog of Japanese convenience-store products."
     }

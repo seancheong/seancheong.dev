@@ -13,17 +13,11 @@ export function SiteShell({
 }) {
   const t = useTranslations('Shell');
   const home = `/${locale}`;
-  const sections = [
-    'home',
-    'experience',
-    'projects',
-    'articles',
-    'contact',
-  ] as const;
+  const sections = ['experience', 'projects', 'articles', 'contact'] as const;
   const links = sections.map((section) => (
     <a
       key={section}
-      href={section === 'home' ? home : `${home}#${section}`}
+      href={`${home}#${section}`}
       className={section === 'contact' ? 'site-contact-link' : undefined}
     >
       {t(`navigation.${section}`)}

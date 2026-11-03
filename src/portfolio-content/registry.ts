@@ -37,7 +37,7 @@ export const configuration = {
             'https://github.com/seancheong/takonbini-web/blob/6d9e63e78fd8cd77449214773dbbd65fcb3f8889/docs/evidence/homepage-rendering-2026-10-26.md',
         },
       ],
-      cover: '/images/work/takonbini/catalog-seven-eleven-desktop.webp',
+      cover: '/images/work/takonbini/catalog-seven-eleven-dark-desktop.webp',
       liveUrl: 'https://takonbini.com',
       sourceUrl: 'https://github.com/seancheong/takonbini-web',
     },
@@ -73,7 +73,7 @@ export const configuration = {
       ],
       liveUrl: 'https://script-blender.vercel.app/',
       sourceUrl: 'https://github.com/seancheong/script-blender',
-      cover: '/images/scriptblender.png',
+      cover: '/images/work/script-blender/workspace.webp',
     },
     {
       slug: 'cashush',

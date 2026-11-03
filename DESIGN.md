@@ -95,3 +95,9 @@ mounts the passive spotlight and reduced-motion policy once. Rebuild approved
 prototypes within production module boundaries; do not import prototype files.
 Existing legacy sections, contact-form behavior and project curation are replaced
 by their delivery tasks. This foundation is not final homepage or release sign-off.
+
+The small `sc` shell monogram uses the system monospace stack in its reserved
+2.5rem box. Loading a second variable font for those two glyphs creates a late
+font dependency on both routes; Geist Mono remains available for real code or
+technical content, without a preload. Main text and headings retain local Geist
+Sans. This avoids changing project assets or subsetting the fonts.

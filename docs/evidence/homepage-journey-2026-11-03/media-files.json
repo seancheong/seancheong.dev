@@ -1,0 +1,27 @@
+[
+  {
+    "path": "public/images/companies/thermofisher.svg",
+    "bytes": 7210,
+    "sha256": "ff5ee118efcac09e00efc71eecb722f2d11610fdcd90bcd49da001288fb414dc"
+  },
+  {
+    "path": "public/images/companies/woven.png",
+    "bytes": 11824,
+    "sha256": "79deacfa77748b47dc34d8c6608b97043d33f84bab618ac2b4b13b457c64bd85"
+  },
+  {
+    "path": "public/images/companies/guidewire.svg",
+    "bytes": 3344,
+    "sha256": "68978fed6f29e81f48748afae361b29e743b1b9ba346ef236dbf2bc911d0e5f6"
+  },
+  {
+    "path": "public/images/companies/asurion.svg",
+    "bytes": 2889,
+    "sha256": "5d50474d48da3dcaf8bcfb79315bfdc1429e5ba64827885e5ddbd36e38d300b8"
+  },
+  {
+    "path": "public/images/work/script-blender/workspace.webp",
+    "bytes": 12602,
+    "sha256": "369027c785a77a8ad2f3f0c4ccdf11e2c4f4d2cfeb0f73dc906b5b7a7365858b"
+  }
+]

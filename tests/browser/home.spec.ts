@@ -10,7 +10,7 @@ test('home navigation reaches projects @smoke', async ({ page }) => {
     .click();
   await expect(page).toHaveURL(/#projects$/);
   await expect(
-    page.getByRole('heading', { name: 'Personal Projects' }),
+    page.getByRole('heading', { name: 'Selected work', exact: true }),
   ).toBeVisible();
   if (process.env.HARNESS_FAILURE === 'browser') {
     await expect(
@@ -25,12 +25,18 @@ test('mobile menu works by keyboard @smoke', async ({ page }) => {
   const menu = page.getByRole('button', { name: 'Menu', exact: true });
   await menu.focus();
   await page.keyboard.press('Enter');
-  await expect(page.locator('details')).toHaveAttribute('open', '');
+  await expect(page.locator('.site-mobile-navigation')).toHaveAttribute(
+    'open',
+    '',
+  );
   await page
     .getByRole('navigation')
     .getByRole('link', { name: 'Projects', exact: true })
     .click();
-  await expect(page.locator('details')).not.toHaveAttribute('open', '');
+  await expect(page.locator('.site-mobile-navigation')).not.toHaveAttribute(
+    'open',
+    '',
+  );
   await expect(page).toHaveURL(/#projects$/);
   await expect(page.locator('#projects')).toBeFocused();
 });
@@ -92,7 +98,7 @@ test('future-locale fixture text fits at each required width', async ({
     for (const text of Object.values(localeFixtures)) {
       await page
         .getByRole('heading', {
-          name: /Personal Projects|プロジェクトと意思決定|项目与工程决策/,
+          name: /Selected work|プロジェクトと意思決定|项目与工程决策/,
         })
         .evaluate((element, value) => {
           element.textContent = value;
@@ -157,13 +163,16 @@ test('mobile disclosure supports Escape and visible keyboard focus @smoke', asyn
   await expect(
     page
       .getByRole('navigation')
-      .getByRole('link', { name: 'Home', exact: true }),
+      .getByRole('link', { name: 'Experience', exact: true }),
   ).toBeFocused();
   await page.screenshot({
     path: `artifacts/browser/shell-keyboard-menu-${test.info().project.name}.png`,
   });
   await page.keyboard.press('Escape');
-  await expect(page.locator('details')).not.toHaveAttribute('open', '');
+  await expect(page.locator('.site-mobile-navigation')).not.toHaveAttribute(
+    'open',
+    '',
+  );
   await expect(menu).toBeFocused();
 });
 
@@ -180,7 +189,7 @@ test('mobile navigation and body content work without JavaScript @smoke', async 
       waitUntil: 'domcontentloaded',
     });
     await expect(
-      page.getByRole('heading', { name: "Hi, I'm Sean,", exact: true }),
+      page.getByRole('heading', { name: 'Sean Cheong.', exact: true }),
     ).toBeVisible();
     await page.getByRole('button', { name: 'Menu', exact: true }).click();
     await page
@@ -189,7 +198,10 @@ test('mobile navigation and body content work without JavaScript @smoke', async 
       .click();
     await expect(page).toHaveURL(/\/en#experience$/);
     await expect(
-      page.getByRole('heading', { name: 'Work Experience', exact: true }),
+      page.getByRole('heading', {
+        name: 'A career across borders.',
+        exact: true,
+      }),
     ).toBeVisible();
     const opacity = await page
       .locator('#experience')
@@ -210,9 +222,11 @@ test('navigation wraps longer future-locale labels without overflow', async ({
   for (const width of widths) {
     await page.setViewportSize({ width, height: 900 });
     if (width < 768)
-      await page.locator('details').evaluate((element: HTMLDetailsElement) => {
-        element.open = true;
-      });
+      await page
+        .locator('.site-mobile-navigation')
+        .evaluate((element: HTMLDetailsElement) => {
+          element.open = true;
+        });
     for (const label of [
       '職務経験とプロジェクトでの意思決定',
       '工作经历与工程项目中的技术决策',
@@ -233,10 +247,10 @@ test('navigation wraps longer future-locale labels without overflow', async ({
   }
 });
 
-test('anchor targets clear the sticky header with one offset @smoke', async ({
-  page,
-}) => {
-  for (const width of [390, 1024]) {
+for (const width of [390, 1024])
+  test(`anchor target clears the sticky header at ${width}px @smoke`, async ({
+    page,
+  }) => {
     await page.setViewportSize({ width, height: 900 });
     await openHome(page);
     if (width < 768)
@@ -254,8 +268,7 @@ test('anchor targets clear the sticky header with one offset @smoke', async ({
       .evaluate((element) => element.getBoundingClientRect().top);
     expect(targetTop).toBeGreaterThanOrEqual(headerBottom);
     expect(targetTop).toBeLessThanOrEqual(headerBottom + 24);
-  }
-});
+  });
 
 test('Container caller utilities override foundation width and gutters', async ({
   page,
