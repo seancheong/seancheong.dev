@@ -228,6 +228,24 @@ regional framing refinement, not final acceptance of all homepage copy/design or
 release/manual gates. Earlier whole-world captures and numeric performance/hosted
 results remain historical evidence for their stated revisions.
 
+## Closer career-location framing — 3 November 2026
+
+Sean's screenshot feedback requested more zoom because the broad APAC framing
+looked visually weak. The map now frames 90°E–156°E and 48°N–10°S, making Japan,
+Malaysia and Singapore approximately twice as large at the existing panel height.
+The background dot stroke is reduced from .85 to .5 SVG units to keep it quiet
+at the larger scale. This closer East/Southeast Asia view supersedes the broader
+APAC extent as the current framing; the preceding captures remain historical.
+
+[Desktop](homepage-journey-2026-11-03/apac-map-zoom-desktop.png) and
+[phone](homepage-journey-2026-11-03/apac-map-zoom-mobile.png) captures were inspected.
+Production build including lint/type/static-output checks, formatting, all 14
+targeted map/browser checks and four zero-violation axe audits pass. Country
+geometry, actual marker coordinates, controls, popups, focus and synchronization
+are retained. The local production preview was rebuilt and restarted. No final
+user visual acceptance, new whole-site performance result, merge or production
+verification is inferred from this refinement.
+
 ## Remaining acceptance gates
 
 - Sean's explicit final homepage positioning, leadership, timeline summaries,

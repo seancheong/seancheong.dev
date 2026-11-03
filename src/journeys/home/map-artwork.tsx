@@ -7,7 +7,7 @@ export function MapArtwork() {
   return (
     <svg
       className="home-map"
-      viewBox="242 26 120 114"
+      viewBox="270 42 66 58"
       role="group"
       aria-label="Asia-Pacific career locations: Singapore, Japan and Malaysia. Kuala Lumpur and Singapore are neighboring cities."
     >
@@ -15,7 +15,7 @@ export function MapArtwork() {
         d={land}
         fill="none"
         className="home-map-land"
-        strokeWidth=".85"
+        strokeWidth=".5"
         strokeLinecap="round"
       />
       {careerPlaces.map((place) =>
