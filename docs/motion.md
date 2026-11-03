@@ -33,17 +33,20 @@ input, window blur, pointer exit and reduced motion hide it. Preference/capabili
 changes update listeners; unmount cancels pending work. It cannot create a tab
 stop, intercept a click or widen the page.
 
-The retained homepage uses Reveal for Experience and Projects. It keeps its
-existing content and section semantics until the journey replacements. Its old
-location-icon loop is removed. Contextual legacy icon/project effects remain
-owned by the homepage replacement, not exported as motion policy. The accepted
-career-timeline progress rail is a homepage-specific treatment under #44, separate
-from the rejected page reading-progress bar.
+The Home journey renders its introduction, project copy and career roles without
+Reveal. Its opt-in orbit uses stationary native radio choices; Spin starts the
+24-second decorative rings, which pause offscreen, in a hidden tab, and for
+reduced motion. Country disclosures remain native without JavaScript. The
+Companion map observes the career reading position, pauses synchronization while
+a country is open, and restores focus on Escape/close. Its progress rail updates
+only a transform once per animation frame and is complete without JavaScript or
+with reduced motion. These are Home-specific treatments, separate from a page
+reading-progress bar. No page entrance choreography or auto-playing orbit is used.
 
 Run `pnpm test:unit`, `pnpm build`, `pnpm test:browser`, `pnpm test:axe` and
 `pnpm test:performance` using the locked toolchain. Browser contracts exercise
 normal/reduced motion, live preference changes, focus, touch, pen, passive
-spotlight behavior, once-only replay prevention and JavaScript-disabled content
+spotlight behavior, opt-in orbit, country focus return, reversible career progress and JavaScript-disabled content
 in Chromium, Firefox and WebKit. Engine emulation does not replace physical-device
 or VoiceOver/NVDA release checks. Performance collection reports existing legacy
 budget failures; strict release acceptance remains required by #48.

@@ -73,7 +73,7 @@ export const configuration = {
       ],
       liveUrl: 'https://script-blender.vercel.app/',
       sourceUrl: 'https://github.com/seancheong/script-blender',
-      cover: '/images/scriptblender.png',
+      cover: '/images/work/script-blender/workspace.webp',
     },
     {
       slug: 'cashush',

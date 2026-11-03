@@ -1,0 +1,30 @@
+[
+  {
+    "report": "artifacts/axe/accessibility-hydrated-home-accessibility-chromium/axe-results.json",
+    "url": "http://localhost:3100/en",
+    "violations": [],
+    "passes": 28,
+    "incomplete": 1
+  },
+  {
+    "report": "artifacts/axe/accessibility-mobile-shell-accessibility-chromium/axe-results.json",
+    "url": "http://localhost:3100/en",
+    "violations": [],
+    "passes": 28,
+    "incomplete": 1
+  },
+  {
+    "report": "artifacts/axe/accessibility-case-study-a-b1601-ith-all-optional-depth-open-chromium/axe-results.json",
+    "url": "http://localhost:3100/en/work/takonbini",
+    "violations": [],
+    "passes": 23,
+    "incomplete": 0
+  },
+  {
+    "report": "artifacts/axe/accessibility-country-popup-accessibility-chromium/axe-results.json",
+    "url": "http://localhost:3100/en",
+    "violations": [],
+    "passes": 29,
+    "incomplete": 2
+  }
+]

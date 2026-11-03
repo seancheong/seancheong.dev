@@ -116,6 +116,26 @@ English is not inferred from a cookie at `/ja`, `/zh-Hans` or another invalid UR
 Automatic middleware alternate links are disabled; the later discoverability
 work emits alternates from real content availability.
 
-The homepage redesign, Articles UI,
+The Articles UI,
 full localized 404 design, and canonical/sitemap/social output remain their
 separate delivery issues. Existing performance and manual release gates remain.
+
+## Home journey
+
+`getHomeContent(locale)` owns the public career records, corrected current role,
+leadership evidence and concise Takonbini feature copy. It returns not-found for
+unpublished locales. `loadHome(locale)` combines that data with the approved
+featured-project and curated-note queries; `HomePage` is the rendered interface.
+The localized route validates the locale, sets it explicitly, and prerenders with
+hourly revalidation. Journeys do not import app components or one another.
+
+Only Takonbini and Script Blender have Home entry points. All other source records
+and assets remain retained. The article query continues to exclude draft notes;
+Home currently provides the existing Medium profile link rather than promoting
+unreviewed article summaries. #45 owns article selection/publication and the hub.
+#46 owns the full contact conversion, including copy-email behavior. The Home
+contact entry currently uses LinkedIn/GitHub and the quieter résumé utility.
+
+The accepted prototype determines the layout and interaction direction. It does
+not approve final homepage wording, manual accessibility, publication readiness
+or production release. #44 records those outstanding acceptance gates.

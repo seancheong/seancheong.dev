@@ -16,7 +16,7 @@ test('English navigation stays in its published locale @smoke', async ({
   await expect(
     page
       .getByRole('navigation')
-      .getByRole('link', { name: 'Home', exact: true }),
+      .getByRole('link', { name: 'Sean Cheong', exact: true }),
   ).toHaveAttribute('href', '/en');
   await expect(
     page
@@ -56,7 +56,7 @@ test('an unpublished locale does not render the English homepage', async ({
   const response = await page.goto('/ja');
   expect(response?.status()).toBe(404);
   await expect(
-    page.getByRole('heading', { name: 'Personal Projects' }),
+    page.getByRole('heading', { name: 'Selected work' }),
   ).toHaveCount(0);
 });
 

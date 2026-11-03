@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 import { access, readFile } from 'node:fs/promises';
 
-import { getPublishedWorkParams } from '../../src/portfolio-content/index.ts';
+import {
+  getPublishedWorkParams,
+  publishedLocales,
+} from '../../src/portfolio-content/index.ts';
 
 const assets = JSON.parse(
   await readFile('.next/app-build-manifest.json', 'utf8'),
@@ -49,4 +52,30 @@ for (const { locale, slug } of getPublishedWorkParams()) {
 }
 console.log(
   'Approved case-study routes have static HTML and hourly revalidation.',
+);
+
+for (const locale of publishedLocales) {
+  const route = `/${locale}`;
+  assert.equal(
+    manifest.routes[route]?.initialRevalidateSeconds,
+    3600,
+    `${route} must have real hourly-revalidated Home output`,
+  );
+  const html = await readFile(`.next/server/app${route}.html`, 'utf8');
+  assert(
+    html.includes('Senior Consultant') && html.includes('Guidewire'),
+    `${route} must expose current career facts in server HTML`,
+  );
+  assert(
+    html.includes('Read the case study') &&
+      html.includes(`/${locale}/work/takonbini`),
+    `${route} must expose its primary evidence path in server HTML`,
+  );
+  assert(
+    !/<form\b/.test(html),
+    `${route} must not revive the legacy message form`,
+  );
+}
+console.log(
+  'Published Home routes have static career content and the case-study path.',
 );

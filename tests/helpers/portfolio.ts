@@ -3,7 +3,7 @@ import { type Page, type TestInfo, expect } from '@playwright/test';
 
 export const widths = [360, 390, 768, 1024, 1440] as const;
 export const localeFixtures = {
-  en: 'Personal Projects',
+  en: 'Selected work',
   ja: 'プロジェクトと意思決定',
   'zh-Hans': '项目与工程决策',
 } as const;

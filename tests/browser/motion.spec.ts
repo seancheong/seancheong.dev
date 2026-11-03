@@ -2,40 +2,6 @@ import { expect, test } from '@playwright/test';
 
 import { openHome } from '../helpers/portfolio';
 
-test('one-time motion keeps content readable and stops for keyboard focus @smoke', async ({
-  page,
-}) => {
-  await page.emulateMedia({ reducedMotion: 'no-preference' });
-  await openHome(page);
-  const reveal = page.locator('#projects .portfolio-reveal');
-  await expect(reveal).toHaveCSS('opacity', '1');
-  // Record the real CSS animation rather than waiting on its short active state.
-  await reveal.evaluate((element) => {
-    element.addEventListener('animationstart', () => {
-      element.setAttribute(
-        'data-observed-animation',
-        getComputedStyle(element).animationDuration,
-      );
-    });
-  });
-  await reveal.scrollIntoViewIfNeeded();
-  await expect(reveal).toHaveAttribute('data-observed-animation', '0.22s');
-  await expect(reveal).not.toHaveAttribute('data-revealing');
-  await expect(reveal).toHaveCSS('transform', 'none');
-  await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
-  await reveal.evaluate((element) =>
-    element.removeAttribute('data-observed-animation'),
-  );
-  await reveal.scrollIntoViewIfNeeded();
-  await expect(reveal).not.toHaveAttribute('data-observed-animation');
-  const link = reveal.getByRole('link').first();
-  await link.focus();
-  await expect(link).toBeFocused();
-  await page.screenshot({
-    path: `artifacts/browser/motion-normal-${test.info().project.name}.png`,
-  });
-});
-
 test('spotlight is passive, mouse-only, and follows preference changes @smoke', async ({
   page,
 }) => {
@@ -69,7 +35,7 @@ test('spotlight is passive, mouse-only, and follows preference changes @smoke', 
   await expect(spotlight).toHaveAttribute('aria-hidden', 'true');
   await page
     .getByRole('navigation')
-    .getByRole('link', { name: 'Home', exact: true })
+    .getByRole('link', { name: 'Sean Cheong', exact: true })
     .focus();
   await page.keyboard.press('Tab');
   await expect(spotlight).toHaveCSS('display', 'none');
@@ -86,11 +52,6 @@ test('spotlight is passive, mouse-only, and follows preference changes @smoke', 
         .trim(),
     ),
   ).toBe('0ms');
-  await page.locator('#projects').scrollIntoViewIfNeeded();
-  await expect(page.locator('#projects .portfolio-reveal')).toHaveCSS(
-    'animation-name',
-    'none',
-  );
   await page.screenshot({
     path: `artifacts/browser/motion-reduced-${test.info().project.name}.png`,
   });
@@ -106,7 +67,10 @@ test('touch input never enables the spotlight @smoke', async ({ browser }) => {
     const page = await context.newPage();
     await openHome(page);
     await page.getByRole('button', { name: 'Menu', exact: true }).tap();
-    await expect(page.locator('details')).toHaveAttribute('open', '');
+    await expect(page.locator('.site-mobile-navigation')).toHaveAttribute(
+      'open',
+      '',
+    );
     await expect(page.locator('.portfolio-spotlight')).toHaveCSS(
       'display',
       'none',
@@ -130,11 +94,9 @@ test('motion content remains readable without JavaScript @smoke', async ({
     const page = await context.newPage();
     await openHome(page);
     for (const id of ['experience', 'projects']) {
-      const region = page.locator(`#${id} .portfolio-reveal`);
+      const region = page.locator(`#${id}`);
       await region.scrollIntoViewIfNeeded();
       await expect(region).toHaveCSS('opacity', '1');
-      await expect(region).toHaveCSS('transform', 'none');
-      await expect(region).toHaveCSS('animation-name', 'none');
       await expect(region.getByRole('heading').first()).toBeVisible();
     }
     await expect(page.locator('.portfolio-spotlight')).toHaveCSS(

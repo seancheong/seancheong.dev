@@ -5,7 +5,7 @@ import { audit, openHome } from '../helpers/portfolio';
 test('hydrated home accessibility', async ({ page }, info) => {
   await openHome(page);
   await page
-    .getByRole('heading', { name: 'Personal Projects' })
+    .getByRole('heading', { name: 'Selected work', exact: true })
     .scrollIntoViewIfNeeded();
   if (process.env.HARNESS_FAILURE === 'axe') {
     await page.evaluate(() => {
@@ -35,5 +35,11 @@ test('case study accessibility with all optional depth open', async ({
       if (el instanceof HTMLDetailsElement) el.open = true;
     }),
   );
+  expect((await audit(page, info)).violations).toEqual([]);
+});
+
+test('country popup accessibility', async ({ page }, info) => {
+  await page.goto('/en');
+  await page.locator('#country-japan summary').click();
   expect((await audit(page, info)).violations).toEqual([]);
 });
