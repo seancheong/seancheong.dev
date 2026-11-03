@@ -162,7 +162,8 @@
 .home-map {
   width: 100%;
   height: auto;
-  overflow: visible;
+  max-height: 20rem;
+  overflow: hidden;
 }
 .home-map-land {
   stroke: hsl(var(--muted-foreground) / 0.5);
@@ -546,10 +547,6 @@
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     gap: 3rem;
   }
-  .home-map-panel {
-    position: sticky;
-    top: 7rem;
-  }
   .home-timeline li {
     min-height: 280px;
   }
@@ -566,4 +563,11 @@
 .home-career-grid[data-active-country='japan'] [data-map-marker='japan'],
 .home-career-grid[data-active-country='malaysia'] [data-map-marker='malaysia'] {
   fill: hsl(var(--heading));
+}
+
+@media (min-width: 64rem) and (min-height: 55rem) {
+  .home-map-panel {
+    position: sticky;
+    top: 7rem;
+  }
 }

@@ -7,9 +7,9 @@ export function MapArtwork() {
   return (
     <svg
       className="home-map"
-      viewBox="0 5 360 155"
+      viewBox="242 26 120 114"
       role="group"
-      aria-label="Career locations: Singapore, Japan and Malaysia. Kuala Lumpur and Singapore are neighboring cities."
+      aria-label="Asia-Pacific career locations: Singapore, Japan and Malaysia. Kuala Lumpur and Singapore are neighboring cities."
     >
       <path
         d={land}

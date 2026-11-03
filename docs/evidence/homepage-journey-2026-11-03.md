@@ -205,6 +205,29 @@ the dark homepage preview, not blanket approval of the final homepage or release
 The earlier numeric performance/hosted measurements above belong to their stated
 commits; they are not remeasured or relabeled as exact results for this refinement.
 
+## APAC map refinement — 3 November 2026
+
+Sean requested the map focus on APAC rather than the world. The existing Natural
+Earth SVG now frames roughly 62°E–182°E and 64°N–50°S, covering India, East/Southeast
+Asia, Australia and New Zealand. Overflow is clipped to that regional viewport;
+the accessible map label names Asia-Pacific. Projection, real career coordinates,
+country selectors, company popups and Companion synchronization are retained.
+
+The map is capped at 320px high. Sticky companionship applies on wide screens at
+least 880px high; shorter desktop screens use normal flow to keep the complete
+panel reachable. Inspection at 1440×900, 390×844 and 1440×720 found no horizontal
+overflow; the desktop panel is sticky at 900px and static at 720px. The measured
+panel height is about 652px in those checks. [Desktop capture](homepage-journey-2026-11-03/apac-map-desktop.png)
+and [phone capture](homepage-journey-2026-11-03/apac-map-mobile.png) were inspected.
+
+Production build (including lint/type/static-output checks), 14 targeted browser
+checks across Chromium/Firefox/WebKit and four zero-violation axe audits pass.
+Country activation, focus return, outside dismissal, Companion reading position,
+touch and all five required widths remain covered. This is the user-authorized
+regional framing refinement, not final acceptance of all homepage copy/design or
+release/manual gates. Earlier whole-world captures and numeric performance/hosted
+results remain historical evidence for their stated revisions.
+
 ## Remaining acceptance gates
 
 - Sean's explicit final homepage positioning, leadership, timeline summaries,
