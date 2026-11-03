@@ -92,7 +92,7 @@ test('motion content remains readable without JavaScript @smoke', async ({
   });
   try {
     const page = await context.newPage();
-    await openHome(page);
+    await openHome(page, 'domcontentloaded');
     for (const id of ['experience', 'projects']) {
       const region = page.locator(`#${id}`);
       await region.scrollIntoViewIfNeeded();

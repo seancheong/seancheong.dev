@@ -25,7 +25,8 @@ test('Home to Takonbini summary, depth and contact @smoke', async ({
   await expect(depth).toHaveAttribute('open', '');
   await expect(depth).toContainText('0.125');
   await page.getByRole('link', { name: 'Contact Sean' }).click();
-  await expect(page).toHaveURL(/\/en#contact$/);
+  await page.waitForURL(/\/en#contact$/, { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#contact')).toBeVisible();
 });
 
 for (const width of widths)

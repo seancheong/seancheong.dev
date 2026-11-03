@@ -9,8 +9,11 @@ export const localeFixtures = {
 } as const;
 export const localePath = (path = '', locale = 'en') => `/${locale}${path}`;
 
-export async function openHome(page: Page) {
-  const response = await page.goto(localePath());
+export async function openHome(
+  page: Page,
+  waitUntil: 'load' | 'domcontentloaded' = 'load',
+) {
+  const response = await page.goto(localePath(), { waitUntil });
   expect(response?.status()).toBe(200);
   await expect(page.getByRole('navigation')).toBeVisible();
 }

@@ -1,0 +1,56 @@
+{
+  "run": 41566866537,
+  "head": "31eeaf7",
+  "failures": [
+    {
+      "test": "motion-motion-content-rema-dd1b7-le-without-JavaScript-smoke-firefox",
+      "documentStatus": 200,
+      "serverContentVisible": true,
+      "unfinishedRequests": [
+        {
+          "path": "/_next/image",
+          "query": {
+            "url": ["/images/work/takonbini/catalog-seven-eleven-desktop.webp"],
+            "w": ["640"],
+            "q": ["75"]
+          },
+          "status": -1
+        },
+        {
+          "path": "/_next/image",
+          "query": {
+            "url": ["/images/companies/woven.png"],
+            "w": ["256"],
+            "q": ["75"]
+          },
+          "status": -1
+        }
+      ]
+    },
+    {
+      "test": "home-journey-server-conten-2f361-rk-without-JavaScript-smoke-firefox",
+      "documentStatus": 200,
+      "serverContentVisible": true,
+      "unfinishedRequests": [
+        {
+          "path": "/_next/image",
+          "query": {
+            "url": ["/images/work/takonbini/catalog-seven-eleven-desktop.webp"],
+            "w": ["640"],
+            "q": ["75"]
+          },
+          "status": -1
+        },
+        {
+          "path": "/_next/image",
+          "query": {
+            "url": ["/images/companies/woven.png"],
+            "w": ["256"],
+            "q": ["75"]
+          },
+          "status": -1
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { type Route, expect, test } from '@playwright/test';
 
 import { widths } from '../helpers/portfolio';
 
@@ -155,7 +155,9 @@ test('server content and native country/orbit choices work without JavaScript @s
   });
   try {
     const page = await context.newPage();
-    await page.goto('http://localhost:3100/en');
+    await page.goto('http://localhost:3100/en', {
+      waitUntil: 'domcontentloaded',
+    });
     await expect(page.locator('#home-title')).toHaveText('SeanCheong.');
     await page.locator('label[for="orbit-script-blender"]').click();
     await expect(
@@ -211,4 +213,62 @@ test('homepage at 200 percent equivalent zoom preserves reading and country cont
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth),
   ).toBeLessThanOrEqual(640);
+});
+
+for (const javaScriptEnabled of [true, false])
+  test(`Home real media decodes with JavaScript ${javaScriptEnabled} @smoke`, async ({
+    browser,
+  }) => {
+    const context = await browser.newContext({ javaScriptEnabled });
+    try {
+      const page = await context.newPage();
+      await page.goto('http://localhost:3100/en', {
+        waitUntil: 'domcontentloaded',
+      });
+      const images = page.locator(
+        '.home-current img, .home-showcase img, .home-timeline img',
+      );
+      await expect(images).toHaveCount(8);
+      for (const image of await images.all()) {
+        await image.scrollIntoViewIfNeeded();
+        await expect
+          .poll(() =>
+            image.evaluate(
+              (element) =>
+                element instanceof HTMLImageElement &&
+                element.complete &&
+                element.naturalWidth > 0,
+            ),
+          )
+          .toBe(true);
+        expect(Number(await image.getAttribute('width'))).toBeGreaterThan(0);
+        expect(Number(await image.getAttribute('height'))).toBeGreaterThan(0);
+        await expect(image).toHaveAttribute('alt', /.+/);
+      }
+    } finally {
+      await context.close();
+    }
+  });
+
+test('server content is readable before images finish without JavaScript @smoke', async ({
+  browser,
+}) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const pending: Route[] = [];
+  try {
+    const page = await context.newPage();
+    await page.route('**/_next/image?*', (route) => {
+      pending.push(route);
+    });
+    await page.goto('http://localhost:3100/en', {
+      waitUntil: 'domcontentloaded',
+    });
+    await expect(page.locator('#home-title')).toHaveText('SeanCheong.');
+    await expect(page.locator('.home-timeline li')).toHaveCount(5);
+    await expect(page.locator('.home-country summary')).toHaveCount(3);
+    await expect.poll(() => pending.length).toBeGreaterThan(0);
+  } finally {
+    await Promise.all(pending.map((route) => route.abort()));
+    await context.close();
+  }
 });

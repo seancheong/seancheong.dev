@@ -113,7 +113,7 @@ or redrawn. Final measurement below includes this change on both routes.
 ## Final local verification
 
 - **98** unit/component/route/content tests pass.
-- **112** browser tests pass across Chromium, Firefox and WebKit, with no retries.
+- **121** browser tests pass across Chromium, Firefox and WebKit, with no retries.
   Includes five viewport widths, keyboard, touch, normal/reduced motion and live
   preference changes, opt-in Orbit, Companion selection/focus/outside dismissal,
   progress reversal, no JavaScript, actual 404s, locale links and case-study/contact
@@ -144,6 +144,44 @@ is not strict whole-site release acceptance. `content:check --release` also exit
 JS-growth evaluation, manual acceptance, hosted CI or deployment is implied by
 these local results. Full local Lighthouse JSON/HTML reports remain in
 `artifacts/lighthouse`; all phase summary samples are committed here.
+
+## Hosted Firefox feedback and deterministic no-JavaScript regression
+
+The first [hosted quality run](https://github.com/seancheong/seancheong.dev/actions/runs/41566866537)
+at `31eeaf7` passed unit, Chromium, WebKit, axe and report-only performance, but
+Firefox failed two no-JavaScript cases while waiting for `page.goto`'s full `load`
+event. Both downloaded traces show the document returned 200 and the entire Home
+content/country controls rendered. Requests for the lazy 640px Takonbini preview
+and 256px Woven logo remained unfinished. The
+[redacted trace summary](homepage-journey-2026-11-03/firefox-no-js-trace-summary.json)
+records those exact pending resources; no authenticated request data is published.
+
+Five local repeats of the original two cases passed, so retrying until green
+would not explain the problem. A controlled pending-image fixture reproduced the
+same wait deterministically with:
+
+```
+pnpm test:browser --project firefox --grep 'server content and native' --timeout 4000
+```
+
+That command failed at `page.goto(... waiting until load)` while the screenshot
+and accessibility snapshot already contained the current role and country controls.
+The content-readiness contract now uses `DOMContentLoaded` for those two
+no-JavaScript navigations, retaining every native interaction/content assertion.
+A separate pending-image test proves server text/career records exist while images
+remain in flight and releases its controlled requests during cleanup. Full native
+interaction tests use real media requests, and independent decoding tests scroll
+to and verify all eight portrait/showcase/timeline images with JavaScript both on
+and off in all three engines. This avoids making a synthetic blocked request
+stall WebKit's interaction/teardown while still locking down the original failure.
+The cross-route case-study → contact check likewise waits for DOM readiness and
+asserts contact visibility, instead of gating its URL assertion on unrelated
+resource completion. No retry or blanket timeout increase was introduced.
+
+Only tests and evidence changed after `31eeaf7`; production source/media/build
+inputs are identical, so its final Lighthouse/axe/build measurements remain the
+application measurements. The expanded final local suite has 121 browser checks;
+hosted follow-up validation is recorded in #44 and the canonical tracker.
 
 ## Remaining acceptance gates
 
