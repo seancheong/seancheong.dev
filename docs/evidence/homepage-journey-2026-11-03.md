@@ -246,6 +246,19 @@ are retained. The local production preview was rebuilt and restarted. No final
 user visual acceptance, new whole-site performance result, merge or production
 verification is inferred from this refinement.
 
+## Country-button chevrons removed — 3 November 2026
+
+Sean found the downward chevrons misleading because they suggested a small popup
+below each country button. Removed the decorative SVG from all three country
+summaries; the filled/bordered button treatment, selected state, 44px minimum hit
+area, native disclosure behavior and keyboard/focus handling remain. This
+supersedes the prototype chevron preference only; it is not final homepage or
+release approval. Build (including lint/type/static-output checks), formatting,
+and nine targeted Chromium/Firefox/WebKit keyboard, touch and no-JavaScript
+checks pass. [Updated buttons](homepage-journey-2026-11-03/country-buttons-no-chevrons.png)
+were inspected in the rebuilt local production preview. Earlier screenshots
+remain historical.
+
 ## Remaining acceptance gates
 
 - Sean's explicit final homepage positioning, leadership, timeline summaries,

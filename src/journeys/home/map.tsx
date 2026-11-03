@@ -177,19 +177,6 @@ export function CareerMap({
                   }}
                 >
                   {place.name}
-                  <svg
-                    aria-hidden="true"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="m4 6 4 4 4-4"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                    />
-                  </svg>
                 </summary>
                 <div
                   className="home-country-popup"
