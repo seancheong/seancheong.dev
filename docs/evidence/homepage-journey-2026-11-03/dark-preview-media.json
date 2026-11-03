@@ -1,0 +1,11 @@
+{
+  "path": "public/images/work/takonbini/catalog-seven-eleven-dark-desktop.webp",
+  "bytes": 81014,
+  "sha256": "5a375605f7b5cbda144b84dbfc6e9a0b91d52e6dfe8e538972c3332965698598",
+  "width": 1440,
+  "height": 1000,
+  "source": "https://takonbini.com/?stores=%5B%22SevenEleven%22%5D&lang=en",
+  "captureDate": "2026-11-03",
+  "theme": "System with browser colorScheme dark; live root dark class verified",
+  "authorization": "Sean requested the dark-theme Takonbini preview image in this chat."
+}

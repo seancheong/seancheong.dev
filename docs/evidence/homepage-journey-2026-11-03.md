@@ -183,6 +183,28 @@ inputs are identical, so its final Lighthouse/axe/build measurements remain the
 application measurements. The expanded final local suite has 121 browser checks;
 hosted follow-up validation is recorded in #44 and the canonical tracker.
 
+## Dark homepage preview refinement — 3 November 2026
+
+Sean requested a dark-theme Takonbini preview in this chat. A fresh real capture
+of the same English 7-Eleven-filtered catalog replaces the homepage cover. The
+browser used dark OS color scheme with the product's System setting; the live
+root's dark class and settled loaded product images were verified before capture.
+The 1440×1000 WebP is 81014 bytes. Its updated alt describes the dark catalog,
+selected chain and visible product cards. Source URL, date and hash are in
+[the capture record](homepage-journey-2026-11-03/dark-preview-media.json).
+
+Production build (including lint/type/static-output checks), content validation,
+formatting and eight targeted browser checks pass. The targeted checks cover
+390/1440px reflow and real image decoding with JavaScript on/off in Chromium,
+Firefox and WebKit. [Rendered preview](homepage-journey-2026-11-03/home-dark-preview-desktop.png)
+was inspected in the local production build.
+
+This is a new capture of current listings, not a recoloring of M01. The original
+approved case-study M01–M04 remain their original evidence; this request authorizes
+the dark homepage preview, not blanket approval of the final homepage or release.
+The earlier numeric performance/hosted measurements above belong to their stated
+commits; they are not remeasured or relabeled as exact results for this refinement.
+
 ## Remaining acceptance gates
 
 - Sean's explicit final homepage positioning, leadership, timeline summaries,
